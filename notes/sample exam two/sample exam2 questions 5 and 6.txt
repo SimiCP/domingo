@@ -1,0 +1,26 @@
+
+QUESTION FIVE #5 sample exam two
+
+int [] d = {6, 8, 4};
+
+d[0] 6
+d[1] 8
+d[2] 4
+d[3] ?
+d[4] ?
+
+
+
+question mark(?) refers to illegal not accesible
+
+
+QUESTION SIX #6 sample exame2
+
+
+char [] t = ( 'H', 'e', 'n' );
+
+t[0] H
+t[1] e
+t[2] n
+t[3] ?
+t[4] ?

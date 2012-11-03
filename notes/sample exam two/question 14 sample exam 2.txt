@@ -1,0 +1,20 @@
+#14
+
+
+write a java method with one character parameter that will return
+the parameter shifterd one letter to the right ('A' becomes 'B', 'B' becomes 'C', etc.)
+if it is a capital letter an otherwise will do nothing (ch is the character input by user)
+
+public static char shift(char ch)
+{ if (ch >= 'A' && ch <= 'Z')
+      
+      ch = (char)((int)(ch)+ 1);
+
+  return ch;
+
+}
+
+shift right +
+shift left -
+
+techinically(int)not needed

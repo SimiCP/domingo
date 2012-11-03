@@ -1,0 +1,43 @@
+string [] names = new String[30];
+double[][] data = new double [30][7];
+
+int n = inputdata(names, data);
+
+0- net pay
+1- gross pay
+2- fed tax
+3- state tax
+4- dues
+5- names
+6- payrate
+
+input is from 5 and 6 (names, payrate)
+
+public static int inputData
+( String []names, double[][]data)
+{ Scanner inFile = new Scanner
+	newFile(prog12.dat"));
+  StringTokenizer st;
+  String line;
+  int i = 0; int m;
+
+leftpad to pring/adjust spaces
+  
+while( i < names.lenght && inFile.hasNext());
+ 
+{ line = inFile.nextLine();
+  st = new StringTokenizer(line);
+  m = st.countTokens();
+  names[i]= st.nextToken();
+  for(int j = i; j < m-2; j++)
+  names[i] = names[i] + " " + st nextToken();
+  data[i][5] = Double.parse.Double(st.nexttoken();
+  data[i][6] = Double.prase.Double(st.nextToken());
+  i++;
+}
+return i;}
+
+Hanock John 40.00 9.95
+
+
+

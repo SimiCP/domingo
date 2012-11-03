@@ -1,0 +1,3 @@
+Scanner Conole = new Scanner(System.in);
+
+double miles, amount, total = 0;
