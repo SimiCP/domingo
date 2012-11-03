@@ -42,14 +42,14 @@ public class programSeven
 		// call for the header method, prints the header in the output
 		header( outFile );
 		
-		double totalAmount = 0; 	// declares and sets the variable totalAmount to zero
-		double totalMiles = 0;		// declares and sets the variable totalMiles to zero
-	   int n = inFile.nextInt();  // declares n and processes the values from the input file,
+		double totalAmount = 0; 	// holds the total amount in variable (totalAmount)
+		double totalMiles = 0;		// holds the total miles in variable  (totalMiles)
+		
+	   int n = inFile.nextInt();  // declares n and processes the values from miles.txt,
 											// n is the amount of values processed
-											
-		int counter = 0;				// declares and sets the variable (counter) to zero
-											// (counter) holds the number of positive values processed
-											
+																	
+		int counter = 0;	 // (counter) holds the number of positive values processed
+								  											
       for (int i = 0; i < n; i++)      // number of values to process (n)
       {    	
 			amount = 0;  
