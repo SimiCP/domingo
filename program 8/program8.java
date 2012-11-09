@@ -23,11 +23,13 @@ public class program8
 		  st = new StringTokenizer( line );
 		}	
         if (grade >= 90)
-		  outFile.println(leftpad( names, 10 ) + ( grades, 10 ) + ("OUTSTANDING");
+		  outFile.println(leftpad(name, 10 ) + (value, 10 ) + ("OUTSTANDING");
+		  
 		  else if (grade >= 70 && grade <= 89) 
-		  outFile.println(leftpad( names, 10 ) + (grades, 10) + ("Satisfactory");
-		  else 
-		  outFile.println(leftpad( names, 10) + (grades, 10) + ("FAILING")
+		  outFile.println(leftpad(name, 10 ) + (value, 10) + ("Satisfactory");
+		  
+		  else
+		  outFile.println(leftpad(name, 10) + (value, 10) + ("FAILING")
       {
 		}
         else 
