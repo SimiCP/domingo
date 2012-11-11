@@ -10,9 +10,14 @@ public class program8
 	   
 		String name;
 		int counter; 
-		double value;
+		int value;
+		String line;
+		double total;
+		int counter2;
 		
 		counter = 0;
+		total = 0;
+		counter2 = 0;
 		
 		// reads file
 		Scanner inFile = new Scanner(new FileReader ("data.txt"));
@@ -24,41 +29,47 @@ public class program8
 		StringTokenizer st;
 		
 		while( inFile.hasNext())
-		{ String line = inFile.next();
+		{ line = inFile.nextLine();
 		  st = new StringTokenizer( line );
-		  String token = st.nextToken();
-		  value = Double.parseDouble( token );
+		  value = Integer.parseInt(st.nextToken());
 		  name = st.nextToken();
-		  
-        if (value >= 90)
-		  outFile.println(rightpad(name, 10 ) + leftpad(value, 10) + ("OUTSTANDING"));
-		  
-		  else if (value >= 70 && value <= 89) 
-		  outFile.println(rightpad(name, 10 ) + leftpad(value, 10) + ("Satisfactory"));
-		  
-		  else
-		  outFile.println(rightpad(name, 10) + leftpad(value, 10) + ("FAILING"));
+		  while( st.hasMoreTokens())
+		  { name = name + " " + st.nextToken();
+        }
+		  if (value >= 90)
+		  	outFile.println(rightpad(name, 17 ) + leftpad(value, 10) + "     OUTSTANDING");
 	
-		  // write file footer
-		  output( outFile, value, name, counter);
+		  else if (value >= 70) 
+		  { outFile.println(rightpad(name, 17 ) + leftpad(value, 10) + "     Satisfactory");
+			 counter2++;
+			 total += value;
+		  }
+			
+		  else
+		  	outFile.println(rightpad(name, 17) + leftpad(value, 10) + "     FAILING");
+	
+		  } // write file for output
+		  output( outFile, counter2, counter, total);
 	   }
 //********************************************************************************************
 	// method header will print the header format to the output file(outFile)
    public static void header(PrintWriter outFile)
    {	// title 
-    	outFile.println("           Report");	
+    	outFile.println("             Grade Report");
+		outFile.println();	
 			// column header 
-    	outFile.println("     Name    Value    Message");
+    	outFile.println("     Name             Value     Message");
 	}
 //********************************************************************************************
 	// print footer
-	public static void output(PrintWriter outFile, double value, String name, int counter)
+	public static void output(PrintWriter outFile, int counter2, int counter, double total)
    {  // line break before footer
 		outFile.println();						
 		// the total of amounts using special formatting from static method leftpad2
-		outFile.println("total amount of " + leftpad( value, 0));
+		outFile.println("total of " + leftpad(total, 0));
 		// the count of entries to be read from the input file
-		outFile.println("number of mileage values procesed is " + counter);
+		outFile.println("number of grade values procesed is " + counter);
+		outFile.println("number of Satisfactory grades processed is " + counter2);
 
 		outFile.close(); 
   }
@@ -78,13 +89,13 @@ public class program8
 		String s;         // string that is returned
   		int m;            // lenght of string (s)
 		
-  		s = (name);
+  		s = name;
   		// determine the lenght of string (s)
   		m = s.length();
   		// pad s by spaces on the left so that the resulting lenght of s is width
   		for (int i = 0; i < width - m; i++)
   		{
-  			s = " " + s;   // one space between the " "
+  			s = s + " ";   // one space between the " " right
   		}
   		return s;
   }
@@ -94,7 +105,7 @@ public class program8
 		String s;         // string that is returned
   		int m;            // lenght of string (s)
   
-  		DecimalFormat fmt = new DecimalFormat("0.0");
+  		DecimalFormat fmt = new DecimalFormat("0");
   		// convert miles to a string with one decimal place
   		s = fmt.format(value);
   		// determine the lenght of string (s)
