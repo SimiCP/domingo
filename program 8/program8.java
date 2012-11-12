@@ -30,6 +30,7 @@ public class program8
 		
 		while( inFile.hasNext())
 		{ line = inFile.nextLine();
+		  counter++;	
 		  st = new StringTokenizer( line );
 		  value = Integer.parseInt(st.nextToken());
 		  name = st.nextToken();
@@ -64,29 +65,16 @@ public class program8
 	// print footer
 	public static void output(PrintWriter outFile, int counter2, int counter, double total)
    {  // line break before footer
-		outFile.println();						
+		outFile.println();
+		outFile.println("Number of data lines procesed is " + counter);						
 		// the total of amounts using special formatting from static method leftpad2
-		outFile.println("total of " + leftpad(total, 0));
-		// the count of entries to be read from the input file
-		outFile.println("number of grade values procesed is " + counter);
-		outFile.println("number of Satisfactory grades processed is " + counter2);
-
+		outFile.println("Total of Satisfactory grades is " + counter2 
+							 + " with the real average of " + leftpad(total/counter2, 0)); 
+		// the count of entries to be read from the input file+ leftpad(total, 0) + " total average of " + total/counter)
 		outFile.close(); 
   }
-  
-  
-  //rightpad for name to a specified width
-  //leftpad for the value to a spcified width .0
-
-  // after the table print in the output file
-  // total number of data lines processsed
-  
-  // forloop?
-  // number and real average of the values between 70 and 89 one decimal
-  // 
    public static String rightpad(String name, int width)
-   {	
-		String s;         // string that is returned
+   {	String s;         // string that is returned
   		int m;            // lenght of string (s)
 		
   		s = name;
@@ -99,10 +87,8 @@ public class program8
   		}
   		return s;
   }
-  
    public static String leftpad(double value, int width)
-   {	
-		String s;         // string that is returned
+   {	String s;         // string that is returned
   		int m;            // lenght of string (s)
   
   		DecimalFormat fmt = new DecimalFormat("0");
