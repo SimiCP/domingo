@@ -20,4 +20,4 @@ Prigeon Dale R           50     FAILING
 Fitzgibbons Rusty        63     FAILING
 
 Number of data lines procesed is 17
-Total of Satisfactory grades is 7 with the real average of 78
+Total of Satisfactory grades is 7 with the real average of 78.1
