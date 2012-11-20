@@ -1,39 +1,14 @@
-// This program calculates reimbursements for the annual summer meeting
-// for the Mathematical Association of America, the organization reimburses 
-// each official state delegate according to the round trip mileage. The
-// mileage data is stored in miles.txt (one value per line), each positive  
-// value will be calculated to a new amount equal to a currency value.
-// The program will create an output file milesamount.txt with the calculated
-// reimbursements for each mileage value processed, the output is displayed
-// on the outfile with a header containing the title and two columns (miles) 
-// and (amount) similar to a table format, each column is adjusted to align
-// vertically by decimal points, the numbers are to align with the header.
-// If the processed mileage value is 0 or negative, the program will write 
-// "*****" to the (amount) column aligned with the processed mileage value in the
-// the (miles) column. After the table it will print three lines, the first line 
-// with the total of reimbursement values, the second contains the number of 
-// mileage values processed, and the third contains the number of mileage values
-// greater or equal to zero. 
-// Methods used:                 //header() and output() inside main method
-//  header() - prints the heading for the table on the output file
-//	 output() - outputs summary information on the output file
-//  leftpad() - adjusts the processed values to be aligned by one decimal point
-//	 leftpad2() - adjusts the processed values to be aligned by two decimal points
-// Brunno Putnam
-// Program #7, CS 1050, Fall 2012, MW
-// Java(JDK 7u9) Platform SE binary, USUS UX31E, windows 7
-
-
 import java.io.*;        	              
 import java.text.*;							  
 import java.util.Scanner;					  
 
-public class programSeven 					  
-{	// main method
+public class programNine				  
+{	
 	public static void main (String [] Args) throws Exception	
 	{ 
-    	double miles;   	 // holds the miles value from input file
-   	double amount;		 // holds the amount value calculated from mileage
+		double totalAmount = 0; 	// holds the total amount in variable (totalAmount)
+		double totalMiles = 0;		// holds the total miles in variable  (totalMiles)
+		int counter = 0;	 // (counter) holds the number of positive values processed
 				
 		// reads file
 		Scanner inFile = new Scanner(new FileReader ("miles.txt"));
@@ -42,38 +17,40 @@ public class programSeven
 		// call for the header method, prints the header in the output
 		header( outFile );
 		
-		double totalAmount = 0; 	// holds the total amount in variable (totalAmount)
-		double totalMiles = 0;		// holds the total miles in variable  (totalMiles)
-		
-	    int n = inFile.nextInt();  // declares n and processes the values from miles.txt,
+	   int n = inFile.nextInt();  // declares n and processes the values from miles.txt,
 											// n is the amount of values processed
-																	
-		int counter = 0;	 // (counter) holds the number of positive values processed
-								  											
+											
+		double[] miles = new double[n];	
+		double[] amount = new double[n];													
+		
+  		{public class getSides(FileReader, miles)
+		double[] miles = new double[n];	
+		double miles[i] = inFile.nextDouble();
+	}						  											
       for (int i = 0; i < n; i++)      // number of values to process (n)
-      {    	
-			amount = 0;  
-			// sets the variable (miles) to acquire the next value from input data file							
-       	miles = inFile.nextDouble();
-			
+      {  
+			amount = 0;
+			double miles[i] = inFile.nextDouble();
+			double amount[i];
+			  
 			// if statments are to calculate all mileage values from input file above zero
 			// each value will pass through the if and else if statements and will be 
 			// calculated into a new (amount) value to correspond to the according mileage
-        	if (miles > 0)						
+        	if (miles[i] > 0)						
         	{  // (counter) adds one to variable for each positive mileage from input file
 			   ++counter; 			   
-          	if(miles < 500)			   
-              amount = 0.15 * miles;   
-            else if (miles < 1000)     
-              amount = 75 + 0.12 *(miles - 500);
-            else if (miles < 1500)
-              amount = 135 + 0.10 *(miles - 1000);
-            else if (miles < 2000)
-              amount = 185 + 0.08 *(miles - 1500);
-            else if (miles < 3000)
-              amount = 225 + 0.06 *(miles - 2000); 
+          	if(miles[i] < 500)			   
+              amount[i] = 0.15 * miles;   
+            else if (miles[i] < 1000)     
+              amount[i] = 75 + 0.12 *(miles[i] - 500);
+            else if (miles[i] < 1500)
+              amount[i] = 135 + 0.10 *(miles[i] - 1000);
+            else if (miles[i] < 2000)
+              amount[i] = 185 + 0.08 *(miles[i] - 1500);
+            else if (miles[i] < 3000)
+              amount[i] = 225 + 0.06 *(miles[i] - 2000); 
             else 
-              amount  = 285 + 0.05 *(miles - 3000);
+              amount[i]  = 285 + 0.05 *(miles[i] - 3000);
 				  
 				// increases the totalMiles by the positive miles values found in the file
 				totalMiles += miles;							 
