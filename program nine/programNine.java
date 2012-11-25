@@ -20,8 +20,8 @@ public class programNine
 	   int n = inFile.nextInt();  // declares n and processes the values from miles.txt,
 											// n is the amount of values processed
 											
-		double[] miles = new double[n];	
-		double[] amount = new double[n];													
+		double[] miles = new double[];	
+		double[] amount = new double[];													
 		
   		{public class getSides(FileReader, miles)
 		double[] miles = new double[n];	
