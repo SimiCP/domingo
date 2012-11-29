@@ -20,27 +20,35 @@ public class programNine
 	   int n = inFile.nextInt();  // declares n and processes the values from miles.txt,
 											// n is the amount of values processed
 											
-		double[] miles = new double[];	
-		double[] amount = new double[];													
+		double[] miles = new double[n];
+		double[] amount = new double[n];
+		inputMiles(miles, inFile, n);
+		calcAmounts(miles, amount);
+		outputDetails(miles, amount, outFile);
+		output(outFile, totalAmount, counter, n);
 		
-  		{public class getSides(FileReader, miles)
-		double[] miles = new double[n];	
-		double miles[i] = inFile.nextDouble();
-	}						  											
+		
+	}													
+		
+  		public static void inputMiles(double[] miles, Scanner inFile, int n)
+		{ 			  											
       for (int i = 0; i < n; i++)      // number of values to process (n)
       {  
-			amount = 0;
-			double miles[i] = inFile.nextDouble();
-			double amount[i];
-			  
+			miles[i] = inFile.nextDouble();
+		}
+	}
+		public static void calcAmounts(double[] miles, double[] amount)
+		
+			{
+			for(int i = 0; i < miles.length; i++)
+			{
 			// if statments are to calculate all mileage values from input file above zero
 			// each value will pass through the if and else if statements and will be 
 			// calculated into a new (amount) value to correspond to the according mileage
         	if (miles[i] > 0)						
-        	{  // (counter) adds one to variable for each positive mileage from input file
-			   ++counter; 			   
+        	{  // (counter) adds one to variable for each positive mileage from input file 			   
           	if(miles[i] < 500)			   
-              amount[i] = 0.15 * miles;   
+              amount[i] = 0.15 * miles[i];   
             else if (miles[i] < 1000)     
               amount[i] = 75 + 0.12 *(miles[i] - 500);
             else if (miles[i] < 1500)
@@ -52,27 +60,30 @@ public class programNine
             else 
               amount[i]  = 285 + 0.05 *(miles[i] - 3000);
 				  
-				// increases the totalMiles by the positive miles values found in the file
-				totalMiles += miles;							 
-				  
 				// sets the proper spacing on the outfile, leftpad and leftpad2 miles
 				// align miles and amount values by one or two decimal points
-				outFile.println(leftpad( miles, 10 ) + leftpad2( amount, 10 )); 
+				
 		  }
         else 
         { 	
-		  		if (miles == 0) 					
-					counter++;		// adds one more to count for a value equal to zero
-				amount = 0; 						
-				// print the mileage values with a special decimal notation
-            outFile.println(leftpad( miles, 10 ) + "     *****" );
+		  		
 		  }
-		  totalAmount += amount;				// total amounts
+
 	   }
 		// write file footer
-		output( outFile, totalAmount, counter, n);
+		
 	}
 //********************************************************************************************
+	public static void outputDetails(double[] miles, double[] amount, PrintWriter outFile)
+	{
+	for (int i=0; i<miles.length; i++)
+	if (miles[i] <= 0) 					
+            outFile.println(leftpad( miles[i], 10 ) + "     *****" );
+				else
+				outFile.println(leftpad( miles[i], 10 ) + leftpad(amount[i], 10 ));
+
+	}
+	
 	// method header will print the header format to the output file(outFile)
    public static void header(PrintWriter outFile)
    {	// title 
