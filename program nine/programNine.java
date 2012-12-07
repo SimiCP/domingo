@@ -7,7 +7,6 @@
       public static void main (String [] Args) throws Exception	
       { 
          double totalAmount = 0; 	// holds the total amount in variable (totalAmount)
-         double totalMiles = 0;		// holds the total miles in variable  (totalMiles)
          int counter = 0;	 // holds the number of positive values processed
          double counter2 = 0;  // values that were above or equal zero
       		
@@ -15,16 +14,23 @@
          Scanner inFile = new Scanner(new FileReader ("miles.txt"));
       // creates a new file where the output informtion will be printed on
          PrintWriter outFile = new PrintWriter("milesamount.txt");
-      // call for the header method, prints the header in the output
-         header( outFile );
-      
-         int n = inFile.nextInt();  // declares n and processes the values from miles.txt,
-      									   // n is the amount of values processed								
+		
+			
+			// n is the amount of values processed		
+         int n = inFile.nextInt();  // declares n and processes the values from miles.txt,								   						
          double[] miles = new double[n];
          double[] amount = new double[n];
-      
-         inputMiles(miles, inFile, n);
-         calcAmounts(miles, amount);
+			
+			double milesTotal = inputMiles(inFile, n, miles);	//fill array
+			totalAmount = calcAmounts(miles, amount, n);
+			counter = count(miles, n);
+			counter2 = (int)count2(miles, n);
+			
+			double averageMiles = average(milesTotal, counter);
+			double averageAmount = average(totalAmount, n);
+         
+			
+			header(outFile);
          outputDetails(miles, amount, outFile);
          output(outFile, totalAmount, milesTotal, counter, counter2, n);
 			outFile.close(); 
@@ -32,7 +38,7 @@
       
       }													
   //************************************************************************ 	
-      public static double inputMiles(double[] miles, Scanner inFile, int n)
+      public static double inputMiles(Scanner inFile, int n, double[]miles)
       { 	double milesTotal = 0; 		  											
          for (int i = 0; i < n; i++)      // number of values to process (n)
       	{ miles[i] = inFile.nextDouble();
@@ -43,7 +49,7 @@
 			return milesTotal;
       }
   //************************************************************************
-      public static double calcAmounts(double[] miles, double[] amount)
+      public static double calcAmounts(double[] miles, double[] amount, int n)
       
       {	double amountTotal = 0;
          for(int i = 0; i < miles.length; i++)
@@ -78,7 +84,13 @@
             
             }
    //********************************************************************************************
-		public static int counter(double miles[], int n)
+		public static double average(double sum, int counter)
+		{
+			return sum/(double)counter;
+		}
+	//********************************************************************************************
+	
+		public static int count(double miles[], int n)
 		{ int counter = 0;
 		  for(int i = 0; i < n; i++)
 		  	if(miles[i] > 0);
@@ -86,7 +98,7 @@
 		  return counter;
 		}
 	//********************************************************************************************
-		public static double counter2(double miles[], int n)
+		public static double count2(double miles[], int n)
 		{ double counter2 = 0;
 			for(int i = 0; i < n; i++)
 				if(miles[i] >= 0)
@@ -101,7 +113,7 @@
             if (miles[i] <= 0) 					
                outFile.println(leftpad( miles[i], 10 ) + "     *****" );
             else
-               outFile.println(leftpad( miles[i], 10 ) + leftpad(amount[i], 10 ));
+               outFile.println(leftpad( miles[i], 10 ) + leftpad2(amount[i], 10 ));
       
       }
 	//********************************************************************************************
@@ -127,7 +139,7 @@
          outFile.println("number of mileage values procesed is " + n);
       // prints the count of entries without negatives miles
 			outFile.println("number of mileage values above or equal zero " + counter2);
-			outFile.println("the total of lieage values above zero " + leftpad2(milesTotal, 0)); 
+			outFile.println("the total of lieage values above zero " + leftpad(milesTotal, 0)); 
          outFile.println("number of mileage values is " + counter);
       }
    //*********************************************************************************************

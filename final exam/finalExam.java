@@ -14,10 +14,13 @@ public static void main(String[]Args) throws Exception
 	
 	int n = inputData(names, reals, ints, inFile);
 	int left = leftover(inFile);
-	double Y = calcAvg(ints)
-	findLargest(reals, tempL);
-	PrintComparison(reals, names, ints, Y);
 	output(names, ints, reals, outFile, left, Y);
+	
+	double Y = calcAvg(ints);
+	PrintComparison(reals, names, ints, Y);
+	findLargest(reals, temp);
+	
+	
 
 
 //*****************************************************************
@@ -85,18 +88,18 @@ public static double calcAvg(int[i][0]ints)
  for(int i = 0; i < n; i++;)
  Y += ints[i][0];
  
- return Y/(double)n;
+ return Y/(double)n;  //casting not needed
  }
 //**************************************************find largest
-public static double findLargest(double[][] reals, int tempL)
-{int tempL = reals[i][1];
+public static double findLargest(double[][] reals, int n)
+{int tempL = reals[0][1];
 for(int i = 1, i < n; i++)
 	if(reals[i][1] > tempL)
 	tempL = reals[i][1];
 	return tempL;
 }
 //**************************************************keyboard search/ compare to
-public static void keySearch(String names[], int[][]ints)
+public static void keySearch(String names[], int[][]ints, int n)
 { Scanner console = new Scanner(System.in);
   System.out.println("Input name: ");
   String name = console.nextLine();
@@ -107,8 +110,9 @@ public static void keySearch(String names[], int[][]ints)
   for(int i = 0; i < n; i++)
   if(name.compareTO(names[i]) == 0)
   {System.out.println(ints[i][0] + " " + ints[i][1]);
-  	found = true;
-   if found == false;   // does found equal false
+  	found = true; break;
+  }
+   if (found == false)   // does found equal false
 	System.out.println("name not found");
 	System.out.println("Input name: ");
    name = console.nextLine();
@@ -116,4 +120,5 @@ public static void keySearch(String names[], int[][]ints)
 	}
   }
 //*****************************************************
+
   
