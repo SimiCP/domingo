@@ -31,7 +31,7 @@ public class finalExam
 		System.out.println("largest: " + X);
 
 		ouFile.close();
-		System.out.println("Brunno");
+		System.out.println("DOMINGO FLORES");
 	}
 
 //*************************PRINT COMPARISON
