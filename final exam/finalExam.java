@@ -53,7 +53,7 @@ public static int inputData(String[]names, double[][]reals, int[][]ints, Scanner
 public static int leftover(Scanner inFile)
 { int left = 0;
 	while(inFile.hasNext())
-}
+} 
 	left++;
 	inFile.nextLine();
 	}
@@ -61,8 +61,8 @@ public static int leftover(Scanner inFile)
 }
 	
 //****************************************************************
-public static void output(String [] names, int [][] ints, double [][] reals, PrintWriter outFile, int left)
-PrintWriter outFile, int left, double Y)
+public static void output(String [] names, int [][] ints, double [][] reals, PrintWriter outFile, int left, double Y)
+
 for(int = 0; i < n; i++)
 {
 outFile.println(names[i] + " " + ints[i][o] + " " + reals[i][0] + " " + ints[i][0]
@@ -114,6 +114,7 @@ public static void keySearch(String names[], int[][]ints, int n)
   }
    if (found == false)   // does found equal false
 	System.out.println("name not found");
+	else
 	System.out.println("Input name: ");
    name = console.nextLine();
 	

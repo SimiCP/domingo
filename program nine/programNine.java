@@ -1,4 +1,8 @@
-   import java.io.*;        	              
+// Brunno Putnam
+// Program #9, CS 1050, Fall 2012, MW
+// Java(JDK 7u9) Platform SE binary, USUS UX31E, windows 7
+
+	import java.io.*;        	              
    import java.text.*;							  
    import java.util.Scanner;					  
 
@@ -6,41 +10,36 @@
    {	
       public static void main (String [] Args) throws Exception	
       { 
-         double totalAmount = 0; 	// holds the total amount in variable (totalAmount)
-         int counter = 0;	 // holds the number of positive values processed
-         double counter2 = 0;  // values that were above or equal zero
-      		
-      // reads file
+         double totalAmount = 0; 	
+			int counter = 0;	 
+         double counter2 = 0;
+			     	
          Scanner inFile = new Scanner(new FileReader ("miles.txt"));
-      // creates a new file where the output informtion will be printed on
          PrintWriter outFile = new PrintWriter("milesamount.txt");
 		
-			
-			// n is the amount of values processed		
-         int n = inFile.nextInt();  // declares n and processes the values from miles.txt,								   						
+			int n = inFile.nextInt();  								   						
          double[] miles = new double[n];
          double[] amount = new double[n];
 			
-			double milesTotal = inputMiles(inFile, n, miles);	//fill array
+			double milesTotal = inputMiles(inFile, n, miles);	
 			totalAmount = calcAmounts(miles, amount, n);
 			counter = count(miles, n);
 			counter2 = (int)count2(miles, n);
 			
 			double averageMiles = average(milesTotal, counter);
 			double averageAmount = average(totalAmount, n);
-         
-			
+         	
 			header(outFile);
-         outputDetails(miles, amount, outFile);
-         output(outFile, totalAmount, milesTotal, counter, counter2, n);
+         outputDetails(miles, amount, outFile, n);
+         output(outFile, totalAmount, milesTotal, counter, 
+			averageMiles, averageAmount, counter2, n);
 			outFile.close(); 
       
-      
       }													
-  //************************************************************************ 	
+  //********************************************************** 	
       public static double inputMiles(Scanner inFile, int n, double[]miles)
       { 	double milesTotal = 0; 		  											
-         for (int i = 0; i < n; i++)      // number of values to process (n)
+         for (int i = 0; i < n; i++)     
       	{ miles[i] = inFile.nextDouble();
 				if(miles[i] > 0)
 					milesTotal += miles[i];
@@ -48,17 +47,18 @@
          }
 			return milesTotal;
       }
-  //************************************************************************
+  //***********************************************************
       public static double calcAmounts(double[] miles, double[] amount, int n)
       
       {	double amountTotal = 0;
          for(int i = 0; i < miles.length; i++)
          {
-         // if statments are to calculate all mileage values from input file above zero
-         // each value will pass through the if and else if statements and will be 
-         // calculated into a new (amount) value to correspond to the according mileage
+         // if statments are to calculate all mileage values 
+			// from input file above zero each value will pass through
+			// the if and else if statements and will be calculated into
+			// a new (amount) value to correspond to the according mileage
             if (miles[i] > 0)						
-            {  // (counter) adds one to variable for each positive mileage from input file 			   
+            {  // (counter) adds one to variable for each positive mileage 		   
                if(miles[i] < 500)			   
                   amount[i] = 0.15 * miles[i];   
                else if (miles[i] < 1000)     
@@ -71,9 +71,6 @@
                   amount[i] = 225 + 0.06 *(miles[i] - 2000); 
                else 
                   amount[i]  = 285 + 0.05 *(miles[i] - 3000);
-              
-            // sets the proper spacing on the outfile, leftpad and leftpad2 miles
-            // align miles and amount values by one or two decimal points
             
             }
             else 
@@ -83,12 +80,12 @@
 				return amountTotal;	
             
             }
-   //********************************************************************************************
+   //*******************************************************
 		public static double average(double sum, int counter)
 		{
 			return sum/(double)counter;
 		}
-	//********************************************************************************************
+	//*******************************************************
 	
 		public static int count(double miles[], int n)
 		{ int counter = 0;
@@ -97,7 +94,7 @@
 		  		counter++;
 		  return counter;
 		}
-	//********************************************************************************************
+	//********************************************************
 		public static double count2(double miles[], int n)
 		{ double counter2 = 0;
 			for(int i = 0; i < n; i++)
@@ -105,44 +102,51 @@
 				 counter2++;
 			return counter2;
 		}
-	//********************************************************************************************
-	
-      public static void outputDetails(double[] miles, double[] amount, PrintWriter outFile)
+	//********************************************************	
+      public static void outputDetails(double[] miles, double[] amount,
+												   PrintWriter outFile, int n)
       { double counter2 = 0;
-         for (int i=0; i < miles.length; i++)
+         for (int i=0; i < n; i++)
             if (miles[i] <= 0) 					
-               outFile.println(leftpad( miles[i], 10 ) + "     *****" );
+            outFile.println(leftpad( miles[i], 10 ) + "     *****" );
             else
-               outFile.println(leftpad( miles[i], 10 ) + leftpad2(amount[i], 10 ));
+            outFile.println(leftpad( miles[i], 10 ) + leftpad2(amount[i], 10 ));
       
       }
-	//********************************************************************************************
-   
-   // method header will print the header format to the output file(outFile)
+	//*******************************************************
       public static void header(PrintWriter outFile)
       {	// title 
          outFile.println("           MMA");	
       	// column header 
          outFile.println("     miles    amount");
       }
-   //********************************************************************************************
-   // print footer
-   // this method outputs the total reimbursment amount (totalAmount)
-   // outputs the number of mileage values processed (n)
-   // outputs the number of values >= 0 (counter)
-      public static void output(PrintWriter outFile, double totalAmount, double milesTotal, int counter, double counter2, int n)
-      {  // line break before footer
+   //********************************************************
+      public static void output(PrintWriter outFile, double totalAmount, 
+										  double milesTotal, int counter,
+										  double averageMiles, double averageAmount, 
+										  double counter2, int n)
+      {  
          outFile.println();						
-      // the total of amounts using special formatting from static method leftpad2
-         outFile.println("total amount of " + leftpad2( totalAmount, 0));
-      // the count of entries to be read from the input file
-         outFile.println("number of mileage values procesed is " + n);
-      // prints the count of entries without negatives miles
-			outFile.println("number of mileage values above or equal zero " + counter2);
-			outFile.println("the total of lieage values above zero " + leftpad(milesTotal, 0)); 
-         outFile.println("number of mileage values is " + counter);
+      
+         outFile.println("total amount of " 
+					          + leftpad2(totalAmount, 0));
+			
+         outFile.println("number of mileage values procesed is " 		
+								 + n);
+			
+			outFile.println("number of mileage values greater or equal to zero " 
+							    + (int)counter2);
+								 
+			outFile.println("the total of lieage values greater than zero " 
+								 + leftpad(milesTotal, 0)); 
+								 
+			outFile.println("the average number of miles traveled " 
+							    + leftpad(averageMiles/n, 0));
+								 
+			outFile.println("the average reimbursement is " 
+							    + leftpad2(averageAmount, 0));
       }
-   //*********************************************************************************************
+   //**********************************************************
    // decimal format for amount
       public static String leftpad2(double amount, int width)
       {	
@@ -161,7 +165,7 @@
          }
          return s;
       }
-   // ********************************************************************************************
+   // ***********************************************************
    // decimal format for miles
       public static String leftpad(double miles, int width)
       {	
