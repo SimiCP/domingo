@@ -49,7 +49,7 @@ public static void main (String[]Args) throws Exception
            }
              return i;
        }
-//***************** print details ********************
+//***************** print details *****************************************************************
 	public static void report(PrintWriter outFile, String[] names, double[][] data, double grossP, 
 									  double totalDues, double fedTax, double stateTax, double netPay, int n)
 	{
@@ -60,28 +60,32 @@ public static void main (String[]Args) throws Exception
 	
 	public static void header(PrintWriter outFile, String[] names, double[][] data)
 	{
-	outFile.println("\t\t\t\t\t\t\t\t\t\t\t\\t\t\tNatural Pine Furniture Company Payroll Report");
+	outFile.println("\t\t\t\t\t\t\t\t\t\t\t\t\tNatural Pine Furniture Company Payroll Report");
 	outFile.println();
-	outFile.println(" Name                             " +  "Net pay    "  + " Gross pay  "  + "Federaltax"  
-						 + "  State tax" +  "      Dues" +  "       Hours" + " " + "     Pay rate");
+	outFile.println(" Name                             " +  "Net pay    "  + " Gross pay  "  + 
+	                "Federaltax"  + "  State tax" +  "      Dues" +  "       Hours" + " " +
+						  "     Pay rate");
 	}
 					 
 	public static void output(PrintWriter outFile, String[] names, double[][] data, int n)
 	{	int j;
 		for (j = 0; j < n; j++)
-		outFile.println(rightpad(names[j], 19) + "\t" + leftpad(data[j][0], 20) + "\t " + leftpad(data[j][1], 10) + "\t" + leftpad(data[j][2], 10) + " " 
-						    + leftpad(data[j][3], 10) + "\t" + leftpad(data[j][4], 10) + "\t" + leftpad(data[j][5], 10) + "\t" + leftpad(data[j][6], 10));
+		outFile.println(rightpad(names[j], 19) + "\t" + leftpad(data[j][0], 20) + "\t " + 
+		                leftpad(data[j][1], 10) + "\t" + leftpad(data[j][2], 10) + " " 
+						    + leftpad(data[j][3], 10) + "\t" + leftpad(data[j][4], 10) + "\t" +
+							  leftpad(data[j][5], 10) + "\t" + leftpad(data[j][6], 10));
 	}
 
-	public static void printTotals(PrintWriter outFile, double grossP, double totalDues, double fedTax, 
-											 double stateTax, double netPay, int n)
+	public static void printTotals(PrintWriter outFile, double grossP, double totalDues,
+	                               double fedTax,double stateTax, double netPay, int n)
 	{										 
-	outFile.println("total netpay: " + netPay + "\ntotal gross pay: " + grossP + "\ntotal dues: " + totalDues
-						 + "\ntotal federal tax: " + fedTax + "\ntotal state tax: " + stateTax);
+	outFile.println("total netpay: " + netPay + "\ntotal gross pay: " + grossP + 
+	                "\ntotal dues: " + totalDues + "\ntotal federal tax: " + fedTax +
+						  "\ntotal state tax: " + stateTax);
 	}
 		
        
-//*****************GrossPay
+//*****************GrossPay**********************************************************************
 	public static double calcPay(double[][] data, int n)
 	{
 	double totalGross = 0;
@@ -93,12 +97,13 @@ public static void main (String[]Args) throws Exception
 		else if (data[i][5] <= 50.0)
 		data[i][1] = data [i][6] *  (40 + data[i][5] - 40) * 1.5 * data[i][6];
 		else
-		data[i][1] = data [i][6] * 40 + 10 * 1.5 * data[i][6] + (data[i][5] - 50.0) * data[i][6] * 2;
+		data[i][1] = data [i][6] * 40 + 10 * 1.5 * data[i][6] + (data[i][5] - 50.0) *
+		            data[i][6] * 2;
 		totalGross += data[i][1];
 		}
 	 return totalGross;
 	}
-//********************************dues	
+//********************************dues**********************************************
 	public static double dues(double data[][], int n)
 	{ int j = 0;
 	  double totalDues = 0;
@@ -109,7 +114,7 @@ public static void main (String[]Args) throws Exception
 	  return totalDues;
 	}
 	
-//************************fedTax
+//************************fedTax*****************************************************
 	public static double fTax(double[][] data, int n)
 	{ int j = 0;
 	  double fedTax = 0;
@@ -120,7 +125,7 @@ public static void main (String[]Args) throws Exception
 	return fedTax;
 	}
 
-//***********************state tax
+//***********************state tax***************************************************
 	public static double sTax(double[][] data, int n)
 	{ int i = 0;
 	  double stTax = 0;
@@ -130,7 +135,7 @@ public static void main (String[]Args) throws Exception
 	} 
 	  return stTax;
 	}
-//**********************netpay
+//**********************netpay********************************************************
 	public static double nPay(double[][] data, int n)
 	{ double netPay = 0;
 	  int i;
@@ -140,7 +145,7 @@ public static void main (String[]Args) throws Exception
 	  }
 	  return netPay;
 	}
-//*******************leftover
+//*******************leftover*********************************************************
 	public static int leftover(Scanner inFile)
 	{ int left = 0;
 		while(inFile.hasNext())
@@ -151,7 +156,7 @@ public static void main (String[]Args) throws Exception
 	return left;
 	}
 	
-	 //***********************leftpad1************************************************************************
+	 //***********************leftpad1******************************************************************
  
       public static String leftpad(double data, int width)
       {  String s;        
@@ -166,11 +171,8 @@ public static void main (String[]Args) throws Exception
             s = " " + s;       
          return s;                         
       }
-		 //***********************leftpad1************************************************************************
- 
-
-
-		  //********************************************************************************************
+	
+  //********************************************************************************************
       public static  String rightpad(String name, int width)
             // returns a String consisting padded on right to a specified width
       { int m;
@@ -180,5 +182,6 @@ public static void main (String[]Args) throws Exception
             name  += " " ;          // one space between the ""
          return name;
       }
+		
    
 }

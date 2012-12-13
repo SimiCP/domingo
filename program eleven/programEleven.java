@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.*;
+import java.text.DecimalFormat;
 
 public class programEleven
 {
@@ -149,4 +150,35 @@ public static void main (String[]Args) throws Exception
 	}
 	return left;
 	}
+//****************decimal format	
+      public static String leftpad(double data, int width)
+      {  String s;        
+         int m;        
+      
+         DecimalFormat formatter = new DecimalFormat ("0.00");
+      
+         s = formatter.format(data);
+      
+         m = s.length();                   
+         for (int i = 0; i < width-m; i++) 
+            s = " " + s;       
+         return s;                         
+      }
+		 //***********************leftpad1************************************************************************
+ 
+
+
+		  //********************************************************************************************
+      public static  String rightpad(String name, int width)
+            // returns a String consisting padded on right to a specified width
+      { int m;
+      // determine the legnth of name
+         m = name.length();
+         for (int i = 0; i < width-m; i++)
+            name  += " " ;          // one space between the ""
+         return name;
+      }
+   
+
 }
+
