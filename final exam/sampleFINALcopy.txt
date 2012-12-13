@@ -1,0 +1,50 @@
+CS 1050, Dr. Tucker 			Final Exam					FALL2012
+
+Include imports. The Input for the program is in the file X:Summer12.dat. 
+Each data line has the following form:
+	name in several parts	integer    real	  integer	real,
+with blanks in between the tokens. Store the data in parallel arrays --
+an array of Strings for the names and two 2-dimensional arrays for 
+the numbers (one for the integers and one for the reals). Assume the
+arrays will hold up to 45 elements.  //string[45] names
+	Use mnemonic variable names. Comments are not needed. Use
+methods as indicated below -- do not use global or non-local variables 
+in the methods. You may use global constants. (You may wish to 
+create other methods.) Your code should do the following:
+(in the order listed)
+
+	1. 	Use a method to read and store data until end of file or 
+		the arrays are filled. Also count the number of remaining 
+		data lines. This method should not write.
+
+	2. 	Use a void method to output a table containing the data. The
+		output should be in the file X:Summer10.out. Include a heading
+		for the table. Each row of the table should contain the name
+		read the corresponding numbers (in the order read).
+				(formatting the output is not necessary.)
+		At the end of the table print the number of data lines
+		processed and the number of remaining data lines -- include
+		messages. No other output should be to this file.
+
+	3. 	Use a method to calculate and return the real average Y of
+		the first data values. This method shold not write.
+		Output to the screen on one line the value of Y and a 
+		message. 
+
+	4.	Then for each second value >= Y output to the screen a line
+		containing the corresponding name and the third value.
+
+	5.	Read a name input from the keyboard and search thhe array of
+		names for that name. (Use the String clas method compareto
+		that returns - if the two Strings are identical.) If the 
+		numbers corresponding to it. If the name is not found,
+		output an appropriate message. Continue this until a name 
+		with first character a '#" is read - use the String class
+		method charAt(0) to return the character in position 0 of a
+		String.
+
+	6.	Use a method to find the largest of the fourth data values.
+		This method should not write. Output the largest value to
+		the screen -- include a message.
+
+	7. Output a final message which includes your name. 

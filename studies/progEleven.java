@@ -1,7 +1,8 @@
 import java.io.*;
 import java.util.*;
+import java.text.DecimalFormat;
 
-public class programEleven
+public class progEleven
 {
        public static final double FED_TAX = .18;
        public static final double STATE_TAX = .045;
@@ -11,18 +12,18 @@ public static void main (String[]Args) throws Exception
    {   String[] names = new String[30];
        double[][] data = new double[30][7];
 		 
-		 Scanner inFile = new Scanner(new FileReader("data.txt"));
-		 PrintWriter outFile = new PrintWriter("payroll.txt");
+		 Scanner inFile = new Scanner(new FileReader("prog11"));
+		 PrintWriter outFile = new PrintWriter("Payroll");
 		 
 		 int n = inputData(inFile, names, data);
 		 int left = leftover(inFile);
-		 double pay = calculatePay(data, n);
+		 double grossP = calcPay(data, n);
 		 double totalDues = dues(data, n);
-		 double fedTax = federalTax(data, n);
-		 double stateTax = stateTax(data, n);
+		 double fedTax = fTax(data, n);
+		 double stateTax = sTax(data, n);
 		 double netPay = nPay(data, n);
 		 
-		 report(outFile, names, data, pay, totalDues, fedTax, stateTax, netPay, n);
+		 report(outFile, names, data, grossP, totalDues, fedTax, stateTax, netPay, n);
 		 outFile.close();
 		 
 	} 
@@ -49,39 +50,39 @@ public static void main (String[]Args) throws Exception
              return i;
        }
 //***************** print details ********************
-	public static void report(PrintWriter outFile, String[] names, double[][] data, double pay, 
+	public static void report(PrintWriter outFile, String[] names, double[][] data, double grossP, 
 									  double totalDues, double fedTax, double stateTax, double netPay, int n)
 	{
 	 header(outFile, names, data);
 	 output(outFile, names, data, n);
-	 printTotals(outFile, pay, totalDues, fedTax, stateTax, netPay, n);
+	 printTotals(outFile, grossP, totalDues, fedTax, stateTax, netPay, n);
    }
 	
 	public static void header(PrintWriter outFile, String[] names, double[][] data)
 	{
-	outFile.println("Natural Pine Furniture Company Payroll Report");
+	outFile.println("\t\t\t\t\t\t\t\t\t\t\t\\t\t\tNatural Pine Furniture Company Payroll Report");
 	outFile.println();
-	outFile.println("name " + " " + "net pay" + " " + "gross pay" + " " + "federal tax" + " " 
-						 + "state tax" + " " + "dues" + " " + "hours" + " " + "pay rate");
+	outFile.println(" Name                             " +  "Net pay    "  + " Gross pay  "  + "Federaltax"  
+						 + "  State tax" +  "      Dues" +  "       Hours" + " " + "     Pay rate");
 	}
 					 
 	public static void output(PrintWriter outFile, String[] names, double[][] data, int n)
 	{	int j;
 		for (j = 0; j < n; j++)
-		outFile.println(names[j] + " " + data[j][0] + " " + data[j][1] + " " + data[j][2] + " " 
-						    + data[j][3] + " " + data[j][4] + " " + data[j][5] + " " + data[j][6]);
+		outFile.println(rightpad(names[j], 19) + "\t" + leftpad(data[j][0], 20) + "\t " + leftpad(data[j][1], 10) + "\t" + leftpad(data[j][2], 10) + " " 
+						    + leftpad(data[j][3], 10) + "\t" + leftpad(data[j][4], 10) + "\t" + leftpad(data[j][5], 10) + "\t" + leftpad(data[j][6], 10));
 	}
 
-	public static void printTotals(PrintWriter outFile, double pay, double totalDues, double fedTax, 
+	public static void printTotals(PrintWriter outFile, double grossP, double totalDues, double fedTax, 
 											 double stateTax, double netPay, int n)
 	{										 
-	outFile.println("total netpay: " + netPay + "\ntotal gross pay: " + pay + "\ntotal dues: " + totalDues
+	outFile.println("total netpay: " + netPay + "\ntotal gross pay: " + grossP + "\ntotal dues: " + totalDues
 						 + "\ntotal federal tax: " + fedTax + "\ntotal state tax: " + stateTax);
 	}
 		
        
 //*****************GrossPay
-	public static double calculatePay(double[][] data, int n)
+	public static double calcPay(double[][] data, int n)
 	{
 	double totalGross = 0;
 	int i;
@@ -109,7 +110,7 @@ public static void main (String[]Args) throws Exception
 	}
 	
 //************************fedTax
-	public static double federalTax(double[][] data, int n)
+	public static double fTax(double[][] data, int n)
 	{ int j = 0;
 	  double fedTax = 0;
 	  for(j = 0; j < n; j++)
@@ -120,7 +121,7 @@ public static void main (String[]Args) throws Exception
 	}
 
 //***********************state tax
-	public static double stateTax(double[][] data, int n)
+	public static double sTax(double[][] data, int n)
 	{ int i = 0;
 	  double stTax = 0;
 	  for(i = 0; i < n; i++)
@@ -149,4 +150,35 @@ public static void main (String[]Args) throws Exception
 	}
 	return left;
 	}
+	
+	 //***********************leftpad1************************************************************************
+ 
+      public static String leftpad(double data, int width)
+      {  String s;        
+         int m;        
+      
+         DecimalFormat formatter = new DecimalFormat ("0.00");
+      
+         s = formatter.format(data);
+      
+         m = s.length();                   
+         for (int i = 0; i < width-m; i++) 
+            s = " " + s;       
+         return s;                         
+      }
+		 //***********************leftpad1************************************************************************
+ 
+
+
+		  //********************************************************************************************
+      public static  String rightpad(String name, int width)
+            // returns a String consisting padded on right to a specified width
+      { int m;
+      // determine the legnth of name
+         m = name.length();
+         for (int i = 0; i < width-m; i++)
+            name  += " " ;          // one space between the ""
+         return name;
+      }
+   
 }

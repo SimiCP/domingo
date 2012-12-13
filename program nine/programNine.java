@@ -98,7 +98,7 @@
 		public static double count2(double miles[], int n)
 		{ double counter2 = 0;
 			for(int i = 0; i < n; i++)
-				if(miles[i] >= 0)
+				if(miles[i] > 0)
 				 counter2++;
 			return counter2;
 		}
@@ -137,11 +137,11 @@
 			outFile.println("number of mileage values greater or equal to zero " 
 							    + (int)counter2);
 								 
-			outFile.println("the total of lieage values greater than zero " 
+			outFile.println("the total of mileage values greater than zero " 
 								 + leftpad(milesTotal, 0)); 
 								 
 			outFile.println("the average number of miles traveled " 
-							    + leftpad(averageMiles/n, 0));
+							    + leftpad(averageMiles/counter2, 0));
 								 
 			outFile.println("the average reimbursement is " 
 							    + leftpad2(averageAmount, 0));
