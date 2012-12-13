@@ -24,7 +24,14 @@ public static void main (String[]Args) throws Exception
 		 double netPay = nPay(data, n);
 		 
 		 report(outFile, names, data, pay, totalDues, fedTax, stateTax, netPay, n);
+		 selectionSort(names, data, n);
+		 selectionSort(names, data, n);
+		 report(outFile, names, data, pay, totalDues, fedTax, stateTax, netPay, n);
+
+		 //selectionSort2(names, data, n);
 		 outFile.close();
+		 		
+
 		 
 	} 
 		
@@ -49,7 +56,8 @@ public static void main (String[]Args) throws Exception
            }
              return i;
        }
-//***************** print details ********************
+//***************** 
+//print details 
 	public static void report(PrintWriter outFile, String[] names, double[][] data, double pay, 
 									  double totalDues, double fedTax, double stateTax, double netPay, int n)
 	{
@@ -60,17 +68,20 @@ public static void main (String[]Args) throws Exception
 	
 	public static void header(PrintWriter outFile, String[] names, double[][] data)
 	{
-	outFile.println("Natural Pine Furniture Company Payroll Report");
+	outFile.println("\t\t\t\t\t\t\t\t\t\t\t\t\tNatural Pine Furniture Company Payroll Report");
 	outFile.println();
-	outFile.println("name " + " " + "net pay" + " " + "gross pay" + " " + "federal tax" + " " 
-						 + "state tax" + " " + "dues" + " " + "hours" + " " + "pay rate");
+	outFile.println(" Name                             " +  "Net pay    "  + " Gross pay  "  + 
+	                "Federaltax"  + "  State tax" +  "      Dues" +  "      Hours" + " " +
+						  "     Pay rate");	
 	}
 					 
 	public static void output(PrintWriter outFile, String[] names, double[][] data, int n)
 	{	int j;
 		for (j = 0; j < n; j++)
-		outFile.println(names[j] + " " + data[j][0] + " " + data[j][1] + " " + data[j][2] + " " 
-						    + data[j][3] + " " + data[j][4] + " " + data[j][5] + " " + data[j][6]);
+		outFile.println(rightpad(names[j], 20) + " " + leftpad(data[j][0], 19) + "\t" 
+									    + leftpad(data[j][1], 10) + "\t " + leftpad(data[j][2], 10) + "\t" 
+						    			 + leftpad(data[j][3], 10) + "\t" + leftpad(data[j][4], 10) + " " 
+										 + leftpad(data[j][5], 10) + "\t" + leftpad(data[j][6], 10));
 	}
 
 	public static void printTotals(PrintWriter outFile, double pay, double totalDues, double fedTax, 
@@ -81,7 +92,8 @@ public static void main (String[]Args) throws Exception
 	}
 		
        
-//*****************GrossPay
+//********************
+//grosspay
 	public static double calculatePay(double[][] data, int n)
 	{
 	double totalGross = 0;
@@ -98,7 +110,8 @@ public static void main (String[]Args) throws Exception
 		}
 	 return totalGross;
 	}
-//********************************dues	
+//************************
+//dues	
 	public static double dues(double data[][], int n)
 	{ int j = 0;
 	  double totalDues = 0;
@@ -109,7 +122,8 @@ public static void main (String[]Args) throws Exception
 	  return totalDues;
 	}
 	
-//************************fedTax
+//************************
+//federaltax
 	public static double federalTax(double[][] data, int n)
 	{ int j = 0;
 	  double fedTax = 0;
@@ -120,7 +134,8 @@ public static void main (String[]Args) throws Exception
 	return fedTax;
 	}
 
-//***********************state tax
+//***********************
+//state tax
 	public static double stateTax(double[][] data, int n)
 	{ int i = 0;
 	  double stTax = 0;
@@ -130,7 +145,8 @@ public static void main (String[]Args) throws Exception
 	} 
 	  return stTax;
 	}
-//**********************netpay
+//**********************
+//netpay
 	public static double nPay(double[][] data, int n)
 	{ double netPay = 0;
 	  int i;
@@ -140,7 +156,8 @@ public static void main (String[]Args) throws Exception
 	  }
 	  return netPay;
 	}
-//*******************leftover
+//**********************
+//leftover
 	public static int leftover(Scanner inFile)
 	{ int left = 0;
 		while(inFile.hasNext())
@@ -150,35 +167,56 @@ public static void main (String[]Args) throws Exception
 	}
 	return left;
 	}
-//****************decimal format	
-      public static String leftpad(double data, int width)
-      {  String s;        
-         int m;        
+//**********************
+//decimal format	
+   public static String leftpad(double data, int width)
+   { String s;        
+     int m;        
       
-         DecimalFormat formatter = new DecimalFormat ("0.00");
+     DecimalFormat formats = new DecimalFormat ("0.00");
       
-         s = formatter.format(data);
+     s = formats.format(data);
       
-         m = s.length();                   
-         for (int i = 0; i < width-m; i++) 
-            s = " " + s;       
-         return s;                         
-      }
-		 //***********************leftpad1************************************************************************
- 
-
-
-		  //********************************************************************************************
-      public static  String rightpad(String name, int width)
-            // returns a String consisting padded on right to a specified width
-      { int m;
-      // determine the legnth of name
+     m = s.length();                   
+     for (int i = 0; i < width-m; i++) 
+     s = " " + s;       
+     return s;                         
+   }
+//***********************
+//decimal format
+   public static  String rightpad(String name, int width)
+   { int m;
          m = name.length();
          for (int i = 0; i < width-m; i++)
-            name  += " " ;          // one space between the ""
-         return name;
-      }
-   
-
+            name  += " " ;
+				return name;      
+   }
+//**********************
+//selection sort
+	public static void selectionSort(String[]names, double[][]data, int n)
+	{
+		for(int i = 0; i < n - 1; ++i)
+		{
+			int min = i;
+			for( int l = i + 1; l < n; ++l)
+		   { 
+		  		if(names[min].compareTo(names[l]) > 0)
+				{
+					min = l;
+				}
+			}
+		   if(min != i)
+		   {
+				String temp = names[i];
+		  	 	names[i] = names[min];
+			 	names[min] = temp;
+		  		for( int d = 0; d < data[min].length; d++)
+		   	{
+					double temp2 = data[i][d];
+		  			data[i][d] = data[min][d];
+					data[min][d] = temp2;
+		   	}
+			} 
+		}
+	}
 }
-

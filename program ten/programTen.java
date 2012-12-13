@@ -1,6 +1,6 @@
-// CS1050 MW FALL 2012
 // Brunno Putnam
-// Program # 10
+// Program #10, CS 1050, Fall 2012, MW
+// Java(JDK 7u9) Platform SE binary, USUS UX31E, windows 7
 
 import java.io.*;        	              
 import java.text.*;							  
@@ -82,7 +82,7 @@ public class programTen
         int left = 0;
         while(inFile.hasNext())
         {
-            inFile.hasNext();
+            inFile.nextInt();
             left++;
         }
         return left;

@@ -1,0 +1,36 @@
+  List
+88
+90
+56
+99
+11
+78
+82
+100
+27
+39
+100
+99
+46
+31
+73
+number of values in the array: 15
+the number of values that do not fit in array: 4
+
+value                  original position
+11                                 4
+27                                 8
+31                                 13
+39                                 9
+46                                 12
+56                                 2
+73                                 14
+78                                 5
+82                                 6
+88                                 0
+90                                 1
+99                                 11
+99                                 3
+100                                 7
+100                                 10
+Brunno Putnam
