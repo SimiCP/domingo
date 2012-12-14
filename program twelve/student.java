@@ -1,8 +1,9 @@
 public class student
 	{
 		public String name;
-		public double gpa;
-		public int hrspassed;
+		public double gpa = 0;
+		public int hrspassed = 0;
+
 	}
 
 
