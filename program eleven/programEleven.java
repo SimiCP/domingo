@@ -1,3 +1,7 @@
+// Brunno Putnam
+// Program #11, CS 1050, Fall 2012, MW
+// Java(JDK 7u9) Platform SE binary, USUS UX31E, windows 7
+
 import java.io.*;
 import java.util.*;
 import java.text.DecimalFormat;
@@ -25,16 +29,14 @@ public static void main (String[]Args) throws Exception
 		 
 		 report(outFile, names, data, pay, totalDues, fedTax, stateTax, netPay, n);
 		 selectionSort(names, data, n);
-		 selectionSort(names, data, n);
+		 report(outFile, names, data, pay, totalDues, fedTax, stateTax, netPay, n);
+		 selectionSort2(names, data, n);
 		 report(outFile, names, data, pay, totalDues, fedTax, stateTax, netPay, n);
 
-		 //selectionSort2(names, data, n);
-		 outFile.close();
-		 		
-
-		 
+		 outFile.close();	 
 	} 
-		
+//*******************
+//input data
        public static int inputData(Scanner inFile, String[] names, double[][] data)
        {   StringTokenizer st;
            String line;
@@ -87,8 +89,9 @@ public static void main (String[]Args) throws Exception
 	public static void printTotals(PrintWriter outFile, double pay, double totalDues, double fedTax, 
 											 double stateTax, double netPay, int n)
 	{										 
-	outFile.println("total netpay: " + netPay + "\ntotal gross pay: " + pay + "\ntotal dues: " + totalDues
-						 + "\ntotal federal tax: " + fedTax + "\ntotal state tax: " + stateTax);
+	outFile.println("total netpay: " + leftpad(netPay, 0) + "\n total gross pay: " + leftpad(pay, 0) 
+						 + "\n total dues: " + leftpad(totalDues, 0) + "\n total federal tax: " + leftpad(fedTax, 0) 
+						 + "\n total state tax: " + leftpad(stateTax, 0));
 	}
 		
        
@@ -219,4 +222,34 @@ public static void main (String[]Args) throws Exception
 			} 
 		}
 	}
+//***********
+//selection sort two
+public static void selectionSort2(String[]names, double[][]data, int n)
+	{
+		for(int i = 0; i < n - 1; i++)
+		{
+			int min = i;
+			for( int l = i + 1; l < n; ++l)
+		   { 
+		  		if(data[min][1] > data[l][1])
+				{
+					min = l;
+				}
+			}
+		   if(min != i)
+		   {
+				String temp = names[i];
+				names[i] = names[min];
+				names[min] = temp;
+		  		for( int d = 0; d < data[min].length; d++)
+		   	{
+					double temp2 = data[i][d];
+		  			data[i][d] = data[min][d];
+					data[min][d] = temp2;
+		   	}
+
+		 }
+	}
+	}
 }
+

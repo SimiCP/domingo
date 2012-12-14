@@ -13,7 +13,8 @@
 
 total amount of $1,280.88
 number of mileage values procesed is 10
-number of mileage values greater or equal to zero 8
+number of mileage values greater than zero 8
+number of mileage values greater or equal to zero 9
 the total of mileage values greater than zero 12578.8
-the average number of miles traveled 1572.4
+the average number of miles traveled 174.7
 the average reimbursement is $128.09

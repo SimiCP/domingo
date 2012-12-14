@@ -1,0 +1,99 @@
+													Natural Pine Furniture Company Payroll Report
+
+ Name                             Net pay     Gross pay  Federaltax  State tax      Dues      Hours      Pay rate
+ Hancock John                     232.40	    310.00	      55.80	     13.95	      7.85      40.00	      7.75
+ Light Karen L                    209.15	    280.00	      50.40	     12.60	      7.85      40.00	      7.00
+ Fagan Bert Todd                 2327.61	   3013.50	     542.43	    135.61	      7.85      41.00	      7.00
+ Antrim Forrest N                 529.81	    693.75	     124.88	     31.22	      7.85      60.00	      9.25
+ Camden Warren                    296.24	    392.38	      70.63	     17.66	      7.85      36.50	     10.75
+ Mulicka Al B                     410.59	    539.92	      97.19	     24.30	      7.85      52.33	      9.05
+ Lee Phoebe                      7640.75	   9869.16	    1776.45	    444.11	      7.85      49.75	     11.50
+ Bright Harry                     156.84	    212.50	      38.25	      9.56	      7.85      25.00	      8.50
+ Garris Ted                      2005.89	   2598.38	     467.71	    116.93	      7.85      41.00	      6.50
+ Benson Martyne                  3191.35	   4128.00	     743.04	    185.76	      7.85      43.00	      8.00
+ Lloyed Jeanine D                 208.61	    279.30	      50.27	     12.57	      7.85      39.90	      7.00
+ Leslie Bennie A                 2005.89	   2598.38	     467.71	    116.93	      7.85      41.00	      6.50
+ Brandt Leslie                    410.65	    540.00	      97.20	     24.30	      7.85      58.50	      7.50
+ Schulman David                  2673.17	   3459.38	     622.69	    155.67	      7.85      41.00	      7.50
+ Worthington Dan                 3980.75	   5146.58	     926.39	    231.60	      7.85      40.10	      9.25
+ Hall Gus W                       770.68	   1004.56	     180.82	     45.21	      7.85      80.50	      8.66
+ Prigeon Dale R                   366.47	    483.00	      86.94	     21.74	      7.85      50.10	      8.75
+ Fitzgeibbons Rusty              2441.54	   3160.50	     568.89	    142.22	      7.85      43.00	      7.00
+ Feistner Merle S                 340.90	    450.00	      81.00	     20.25	      7.85      40.00	     11.25
+ Hallquist Dottie                 139.21	    189.75	      34.16	      8.54	      7.85      23.00	      8.25
+ Bolton Seth                     2460.34	   3184.76	     573.26	    143.31	      7.85      43.33	      7.00
+ Taylor Gregg                    3191.35	   4128.00	     743.04	    185.76	      7.85      43.00	      8.00
+ Raskin Rose                     4503.52	   5821.12	    1047.80	    261.95	      7.85      43.00	      9.50
+ Kenwood Pat                     2442.42	   3161.63	     569.09	    142.27	      7.85      40.10	      7.25
+ Slaugher Lew                    3420.53	   4423.72	     796.27	    199.07	      7.85      43.33	      8.25
+total netpay: 46356.65
+ total gross pay: 60068.26
+ total dues: 196.25
+ total federal tax: 10812.29
+ total state tax: 2703.07
+													Natural Pine Furniture Company Payroll Report
+
+ Name                             Net pay     Gross pay  Federaltax  State tax      Dues      Hours      Pay rate
+ Antrim Forrest N                 529.81	    693.75	     124.88	     31.22	      7.85      60.00	      9.25
+ Benson Martyne                  3191.35	   4128.00	     743.04	    185.76	      7.85      43.00	      8.00
+ Bolton Seth                     2460.34	   3184.76	     573.26	    143.31	      7.85      43.33	      7.00
+ Brandt Leslie                    410.65	    540.00	      97.20	     24.30	      7.85      58.50	      7.50
+ Bright Harry                     156.84	    212.50	      38.25	      9.56	      7.85      25.00	      8.50
+ Camden Warren                    296.24	    392.38	      70.63	     17.66	      7.85      36.50	     10.75
+ Fagan Bert Todd                 2327.61	   3013.50	     542.43	    135.61	      7.85      41.00	      7.00
+ Feistner Merle S                 340.90	    450.00	      81.00	     20.25	      7.85      40.00	     11.25
+ Fitzgeibbons Rusty              2441.54	   3160.50	     568.89	    142.22	      7.85      43.00	      7.00
+ Garris Ted                      2005.89	   2598.38	     467.71	    116.93	      7.85      41.00	      6.50
+ Hall Gus W                       770.68	   1004.56	     180.82	     45.21	      7.85      80.50	      8.66
+ Hallquist Dottie                 139.21	    189.75	      34.16	      8.54	      7.85      23.00	      8.25
+ Hancock John                     232.40	    310.00	      55.80	     13.95	      7.85      40.00	      7.75
+ Kenwood Pat                     2442.42	   3161.63	     569.09	    142.27	      7.85      40.10	      7.25
+ Lee Phoebe                      7640.75	   9869.16	    1776.45	    444.11	      7.85      49.75	     11.50
+ Leslie Bennie A                 2005.89	   2598.38	     467.71	    116.93	      7.85      41.00	      6.50
+ Light Karen L                    209.15	    280.00	      50.40	     12.60	      7.85      40.00	      7.00
+ Lloyed Jeanine D                 208.61	    279.30	      50.27	     12.57	      7.85      39.90	      7.00
+ Mulicka Al B                     410.59	    539.92	      97.19	     24.30	      7.85      52.33	      9.05
+ Prigeon Dale R                   366.47	    483.00	      86.94	     21.74	      7.85      50.10	      8.75
+ Raskin Rose                     4503.52	   5821.12	    1047.80	    261.95	      7.85      43.00	      9.50
+ Schulman David                  2673.17	   3459.38	     622.69	    155.67	      7.85      41.00	      7.50
+ Slaugher Lew                    3420.53	   4423.72	     796.27	    199.07	      7.85      43.33	      8.25
+ Taylor Gregg                    3191.35	   4128.00	     743.04	    185.76	      7.85      43.00	      8.00
+ Worthington Dan                 3980.75	   5146.58	     926.39	    231.60	      7.85      40.10	      9.25
+total netpay: 46356.65
+ total gross pay: 60068.26
+ total dues: 196.25
+ total federal tax: 10812.29
+ total state tax: 2703.07
+													Natural Pine Furniture Company Payroll Report
+
+ Name                             Net pay     Gross pay  Federaltax  State tax      Dues      Hours      Pay rate
+ Hallquist Dottie                 139.21	    189.75	      34.16	      8.54	      7.85      23.00	      8.25
+ Bright Harry                     156.84	    212.50	      38.25	      9.56	      7.85      25.00	      8.50
+ Lloyed Jeanine D                 208.61	    279.30	      50.27	     12.57	      7.85      39.90	      7.00
+ Light Karen L                    209.15	    280.00	      50.40	     12.60	      7.85      40.00	      7.00
+ Hancock John                     232.40	    310.00	      55.80	     13.95	      7.85      40.00	      7.75
+ Camden Warren                    296.24	    392.38	      70.63	     17.66	      7.85      36.50	     10.75
+ Feistner Merle S                 340.90	    450.00	      81.00	     20.25	      7.85      40.00	     11.25
+ Prigeon Dale R                   366.47	    483.00	      86.94	     21.74	      7.85      50.10	      8.75
+ Mulicka Al B                     410.59	    539.92	      97.19	     24.30	      7.85      52.33	      9.05
+ Brandt Leslie                    410.65	    540.00	      97.20	     24.30	      7.85      58.50	      7.50
+ Antrim Forrest N                 529.81	    693.75	     124.88	     31.22	      7.85      60.00	      9.25
+ Hall Gus W                       770.68	   1004.56	     180.82	     45.21	      7.85      80.50	      8.66
+ Leslie Bennie A                 2005.89	   2598.38	     467.71	    116.93	      7.85      41.00	      6.50
+ Garris Ted                      2005.89	   2598.38	     467.71	    116.93	      7.85      41.00	      6.50
+ Fagan Bert Todd                 2327.61	   3013.50	     542.43	    135.61	      7.85      41.00	      7.00
+ Fitzgeibbons Rusty              2441.54	   3160.50	     568.89	    142.22	      7.85      43.00	      7.00
+ Kenwood Pat                     2442.42	   3161.63	     569.09	    142.27	      7.85      40.10	      7.25
+ Bolton Seth                     2460.34	   3184.76	     573.26	    143.31	      7.85      43.33	      7.00
+ Schulman David                  2673.17	   3459.38	     622.69	    155.67	      7.85      41.00	      7.50
+ Benson Martyne                  3191.35	   4128.00	     743.04	    185.76	      7.85      43.00	      8.00
+ Taylor Gregg                    3191.35	   4128.00	     743.04	    185.76	      7.85      43.00	      8.00
+ Slaugher Lew                    3420.53	   4423.72	     796.27	    199.07	      7.85      43.33	      8.25
+ Worthington Dan                 3980.75	   5146.58	     926.39	    231.60	      7.85      40.10	      9.25
+ Raskin Rose                     4503.52	   5821.12	    1047.80	    261.95	      7.85      43.00	      9.50
+ Lee Phoebe                      7640.75	   9869.16	    1776.45	    444.11	      7.85      49.75	     11.50
+total netpay: 46356.65
+ total gross pay: 60068.26
+ total dues: 196.25
+ total federal tax: 10812.29
+ total state tax: 2703.07

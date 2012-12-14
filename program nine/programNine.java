@@ -90,7 +90,7 @@
 		public static int count(double miles[], int n)
 		{ int counter = 0;
 		  for(int i = 0; i < n; i++)
-		  	if(miles[i] > 0);
+		  	if(miles[i] > 0)
 		  		counter++;
 		  return counter;
 		}
@@ -98,7 +98,7 @@
 		public static double count2(double miles[], int n)
 		{ double counter2 = 0;
 			for(int i = 0; i < n; i++)
-				if(miles[i] > 0)
+				if(miles[i] >= 0)
 				 counter2++;
 			return counter2;
 		}
@@ -134,8 +134,11 @@
          outFile.println("number of mileage values procesed is " 		
 								 + n);
 			
+			outFile.println("number of mileage values greater than zero " 
+							    + (int)counter);
+								 
 			outFile.println("number of mileage values greater or equal to zero " 
-							    + (int)counter2);
+							    + (int)counter2);					 
 								 
 			outFile.println("the total of mileage values greater than zero " 
 								 + leftpad(milesTotal, 0)); 
@@ -163,6 +166,7 @@
    // ***********************************************************
       public static String leftpad(double miles, int width)
       {	
+			int m;
          String s;        
          DecimalFormat fmt = new DecimalFormat("0.0");
          s = fmt.format(miles);
