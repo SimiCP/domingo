@@ -8,10 +8,11 @@ import java.util.*;
 public class programTwelve
 {
 	public static void main(String[]Args) throws Exception
-	{ 	 Scanner inFile = new Scanner(new FileReader("data.txt"));
-		 PrintWriter outFile = new PrintWriter(System.out);
+	{ 	 
+		 Scanner inFile = new Scanner(new FileReader("data.txt"));
+		 PrintWriter outFile = new PrintWriter("report.txt");
 		 inFile.useDelimiter( "\n" );
-		 ArrayList <student> result = processFile(inFile);
+		 ArrayList <student> result = processFile(inFile, outFile);
 		 inFile = new Scanner(new FileReader("data.txt"));
 		 output(inFile, outFile, result); 
 	}
@@ -19,31 +20,29 @@ public class programTwelve
 	public static ArrayList <student> processFile(Scanner inFile, PrintWriter outFile) 
 	{	 
 		 ArrayList <student> report = new ArrayList <student>();
-		 student data = new student();
-		 StringTokenizer st;
-		 StringTokenizer st2;  
-		 String students;
-		 String name;
-		 String line;
-		 int grade = 0;
-		 int m;
 
-		 
 		 while(inFile.hasNext())
 		 {
-			 line = inFile.nextLine();
+		 	 
+			 double sum = 0;
+			 
+			 int classes = 0;
+			 String line = inFile.nextLine();
 			 outFile.println(line);
-			 st = new StringTokenizer(line, "#");
+			 StringTokenizer st = new StringTokenizer(line, "#");
 			 
-			 name = st.nextToken(); 
-			 students = st.nextToken();
-			 st2 = new StringTokenizer(students);
-			 s = new student();
+		 	 String name = st.nextToken(); 
+			 String students = st.nextToken();
+		 	 StringTokenizer st2 = new StringTokenizer(students);
+			 student s = new student();
 			 
+			 s.name = name;
 	
 			 while(st2.hasMoreTokens())
 			 {
-				credit = Integer.parseInt(st2.nextToken());
+			 	int w = 0;
+			 	
+				int credit = Integer.parseInt(st2.nextToken());
 				char gradeLetter = st2.nextToken().charAt(0);
 				switch(gradeLetter)
 				{
@@ -62,26 +61,43 @@ public class programTwelve
 				 case 'F' :
 				 w = 0;
 				 break;
-				 default : w = 0;
 				} // End of switch
-				sum += w * credit; 
-			   divide += gradeLetter;
-				System.out.println(data.gpa);
-				System.out.println(data.hrspassed);
-			} // end of while
+				
+				switch(gradeLetter)
+				{
+				 case 'A' :case 'B' :case 'C' :case 'D' :case 'F' :
+				 	sum += w * credit;
+					++classes;
+					s.hrspassed += credit;
+				} // End of switch
+			} // ends of while
+			if ( classes > 0 )
+				s.gpa = sum / classes;
+			
+			report.add( s );
 		} // End of first while
 		return report;
 	} // End of the method
 		public static void output(Scanner inFile, PrintWriter outFile, ArrayList <student> result) 
-			{	outFile.println("NAME,          GPA,         HOURS EARNED");
+			{	outFile.println();	
+				outFile.println("NAME,      \t\t\t         GPA,        \t\t\t       HOURS EARNED");
 				outFile.println(); 
-				while(inFile.hasNext())
-					outFile.println(inFile.next()); 	 
 				Iterator<student> i = result.iterator();
-				student data = i.next();
-				outFile.println(i.next());
-				outFile.println("number of students" + result.size());
-				outFile.println("the average GPA");
-				outFile.println("total of hours passed" + data.hrspassed);
+				int counter = 0;
+				double totalgpa = 0;
+				int credit = 0;
+				System.out.println( i.hasNext() );
+				while(i.hasNext())
+				{ 	student data = i.next();
+					outFile.println(data.name + "\t" + data.gpa + "\t\t\t\t\t\t\t\t\t" + data.hrspassed);
+					counter++;
+					totalgpa += data.gpa;
+					credit += data.hrspassed;
+				}
+				totalgpa = totalgpa / counter;
+				outFile.println("number of students " + result.size());
+				outFile.println("the average GPA " + totalgpa );
+				outFile.println("total of hours passed " + credit);
+				outFile.close();
 	}
 } // End of the class

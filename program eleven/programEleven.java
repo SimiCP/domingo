@@ -176,7 +176,7 @@ public static void main (String[]Args) throws Exception
    { String s;        
      int m;        
       
-     DecimalFormat formats = new DecimalFormat ("0.00");
+     DecimalFormat formats = new DecimalFormat ("0.0");
       
      s = formats.format(data);
       

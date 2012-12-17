@@ -1,0 +1,22 @@
+Van Zell David			# 4 D 4 B #
+Toole Nancy 			# 3 A 3 B 5 A 4 X #
+Tucker Henry			# 5 D 3 F 2 U 4 F #
+Van Zell Sally			# 4 C 6 D #
+Tucker Becky			# 3 A 3 A 2 A 4 A 3 A #
+Stratton Charles		# 2 S 2 D 5 C 4 D 1 C #
+Toole Charles			# 3 U #
+Thomas William			# 4 A 3 B 2 C 3 B #
+
+NAME,      			         GPA,        			       HOURS EARNED
+
+Van Zell David				8.0									8
+Toole Nancy 				13.666666666666666									11
+Tucker Henry				1.6666666666666667									12
+Van Zell Sally				7.0									10
+Tucker Becky				12.0									15
+Stratton Charles			4.5									12
+Toole Charles				0.0									0
+Thomas William				9.5									12
+number of students 8
+the average GPA 7.041666666666666
+total of hours passed 80
