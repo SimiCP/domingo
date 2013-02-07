@@ -1,28 +1,28 @@
 /*
-  an SList is an object that holds a bunch of Strings (for now)
+  an WList is an object that holds a bunch of E references
   in some order
 */
 
-public class SList
+public class WList<E>
 {
   // instance variables:
-  private String[] items;  // the array that holds the items in the list
+  private Obeject[] items;  // the array that holds the items in the list
   private int n;  // the current number of items in the list
 
   // constructors:
 
   // construct an empty list with space in the array for 
   // initCapacity items
-  public SList( int initCapacity )
+  public WList( int initCapacity )
   {
-    items = new String[ initCapacity ];
+    items = (E[]) new Object[ initCapacity ];
     n = 0;
   }
 
   // instance methods:
 
   // append the item s to the end of the list
-  public void append( String s )
+  public void append( E s )
   {
     makeMoreSpaceIfNecessary();
 
@@ -32,7 +32,7 @@ public class SList
 
   // insert the item s into the list at index,
   // shift the others
-  public void insert( int index, String s )
+  public void insert( int index, E s )
   {
     if( index < 0 )
     {
@@ -68,7 +68,7 @@ public class SList
     if( n == items.length )
     {
       // make a new, bigger array
-      String[] temp = new String[ items.length*2 ];
+      E[] temp = (E[]) new Object[ items.length*2 ];
 
       // copy the existing items to new array
       for( int k=0; k<n; k++ )
@@ -89,12 +89,12 @@ public class SList
   }
 
   // return the item in the given position
-  public String get( int index )
+  public E get( int index )
   {
     if( index < 0 || index >= n )
       return null;
     else
-      return items[ index ];
+      return (E) items[ index ];
   }
 
   // remove the item in the given position
@@ -118,7 +118,7 @@ public class SList
   }
 
   // replace the item in given position by the given item
-  public void replace( int index, String s )
+  public void replace( int index, E s )
   {
     if( index < 0 || index>=n ) 
     {
@@ -142,7 +142,7 @@ public class SList
     String temp = "[";
     for(int k=0; k<n; k++ )
     {
-      temp += items[k]; // or could do temp += get(k)
+      temp += items[k].toString(); // or could do temp += get(k)
       if( k<n-1 )
         temp += ",";
     }
@@ -158,7 +158,7 @@ public class SList
 
   public static void main(String[] args)
   {
-    SList x = new SList( 4 );
+    WList2<String> x = new WList<String>( 4 );
 
     x.append( "a" );
     x.append( "b" );
