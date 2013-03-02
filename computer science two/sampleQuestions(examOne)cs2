@@ -1,0 +1,261 @@
+1. 
+// IV's:  array int[] a, int n
+
+public void reverse()
+{
+  for( int k=0, j=n-1; k<j  ; k++,j-- )
+  {
+    int temp = a[k];
+    a[k] = a[j];
+    a[j] = temp;
+  }
+
+}
+----------------------------------------
+1.
+
+for( int k=0, j=n-1;  k<j;  k++,j-- )
+{
+  int temp = a[k];
+  a[k] = a[j];
+  a[j] = temp;
+}
+
+--------------------
+
+2.  
+
+Person[] a;
+int n;
+
+public void add( Person p )
+{
+  a[n] = p;
+  n++;
+}
+
+public Person serve()
+{
+  Person temp = a[0];
+
+  for( int k=1;  k<n; k++ )
+  {
+    a[k-1] = a[k];
+  }
+
+  n--;
+  return temp;
+}
+----------------------------------------
+2.  make a "Line" class --- like a line of people
+
+public void add( Person p)
+{
+  a[n] = p;
+  n++;
+}
+
+[3a] this add method is O( 1 )
+
+public Person serve()
+{
+  Person temp = a[0];
+
+  for(int k=1; k<n; k++ )
+  {
+    a[k-1] = a[k];
+  }
+
+  n--;
+  return temp;
+}
+----------------------------------------
+
+3.   Problem 2, add:  O(1)
+                serve: O(n)
+
+     Problem 2 ADT, but use a[n-1] as front:  add:  O(n), serve: O(1)
+
+     2+4+6+...+2n is O( n^2 )
+
+     3n^2 + 7n + log n + 1000 is O( n^2 )
+----------------------------------------
+3.  a.  --- see above
+
+    b.  2+4+6+...+2n = O(n^2)
+        
+    extra:  2+4+6+...+n=O(n^2)
+
+    c.  O(n^2)
+-----------------------------------------------
+4.  
+
+public int countFood( Sack1 sack )
+{
+   int count = 0;
+
+      sack.initForTraverse();
+      while( sack.hasNext() )
+      {
+        Block b = sack.next();
+        if( b.getKind().equals( "food" ) )
+          count++;
+      }
+
+  return count;
+}
+
+Another sample---do same thing to a list of blocks:
+
+public int countFood( WList<Block> list )
+{
+   int count = 0;
+
+   for( int k=0; k<list.size(); k++ )
+   {
+     Block b = list.get(k);
+     if( b.getKind().equals( "food" ) )
+       count++;
+   }
+
+  return count;
+}
+----------------------------------------
+4.  
+
+public int countFood( Sack1 sack )
+{
+   int count = 0;
+
+   sack.initForTraverse();
+   while( sack.hasNext() )
+   {
+     Block b = sack.next();
+     if( b.getKind().equals( "food" ) )
+       count++;    
+   }
+
+   return count;
+}
+
+Bonus problem:  count foods in a list of Blocks:
+
+public int countFood( WList<Block> list )
+{
+   int count = 0;
+
+   for( int k=0; k<list.size(); k++ )
+   {
+     Block b = list.get(k);
+     if( b.getKind().equals( "food" ) )
+       count++;
+   }
+
+   return count;
+}
+
+===================================================
+5.  
+----------------------------------------
+
+6.  
+public int sum( int[] a, int first, int last )
+{
+  if( first == last )
+  {
+    return a[first];
+  }
+  else
+  {
+    int answerFromAssistant = sum( a, first+1, last );
+    return answerFromAssistant + a[first];
+  }
+}
+
+or:
+
+public int sum( int[] a, int first, int last )
+{
+  if( first == last )
+  {
+    return a[first];
+  }
+  else
+  {
+    int mid = (first+last)/2;
+
+    int answer1 = sum( a, first, mid );
+    int answer2 = sum( a, mid+1, last );
+
+    return answer1 + answer2;
+  }
+}
+
+public int fact( int n )
+{
+  if( n==0 )
+  {
+    return 1;
+  }
+  else
+  {
+    return n*fact(n-1);
+  }
+}
+
+
+public int sum( int[] a, int first, int last )
+{
+  if( first==last )
+  {
+    return a[first];
+  }
+  else
+  {
+    int temp = sum( a, first+1, last );
+    return a[first] + temp;
+  }
+
+}
+
+Another sample:  recursively add up all the items in a sack of Blocks
+                 (assume block has getHealth())
+                  Without changing the sack!
+
+public int sumHealths( Sack1 sack )
+{
+  if( sack.size() == 0  )
+  {
+    return 0;
+  }
+  else
+  {
+    // remove an item for the sack:
+    sack.initForTraverse();
+    Block temp = sack.next(); 
+    sack.find( temp.getKey() );
+    sack.remove();
+    int totalHealth = sumHealths( sack );
+
+    sack.add( temp );
+
+    return totalHealth + temp.getHealth();
+  }
+
+}
+
+----------------------------------------
+----------------------------------------
+non-recursive---no credit on the test for this!!!
+
+public int sum( int[] a, int first, int last )
+{
+  int total = 0;
+
+  for( int k=first; k<=last; k++ )
+  {
+    total += a[k];
+  }
+
+  return total;
+}
