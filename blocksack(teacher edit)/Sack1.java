@@ -7,7 +7,8 @@ public class Sack1
   private int n;
   
   private int location;
-  private int cursor;
+  
+  private int cursor; 
 
   public Sack1()
   {
@@ -16,6 +17,7 @@ public class Sack1
     location = -1;
     cursor = -1;
   }
+  
 
 // determine whether there is a block in the sack with the given key
 // (and gather internal information so that get and remove can be
@@ -40,7 +42,7 @@ public class Sack1
   // return a reference to the block that was most recently found
   public Block get()
   {
-    return a[location];
+    return a[location];  //0of1
   }
 
   // remove the block that was most recently found
