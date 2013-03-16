@@ -1,0 +1,44 @@
+public class examOne
+{
+  public void reverse()
+  {
+  		for( int i=0, j=n-1; i<j; i++, j-- )
+		{
+				int temp = a[i];
+				a[i] = a[j];
+				a[j] = temp;
+		}
+  }
+______________________________
+
+	public void reverse()
+	{
+		for( int k=0, j=n-1; k<j; k++, j-- )
+		{ 
+				int temp = a[k];
+				a[k] = a[j];
+				a[j] = temp;
+		}
+______________________________
+2. 
+Person[] a;
+int n;
+
+public void add( Person p )
+{ 
+	a[n] = p;
+	n++;
+}
+
+public Person serve()
+{
+	Person temp = [0];
+	
+	for( int k=1; k<n; k++ )
+	{
+		a[k-1] = a[k];
+	}
+	
+	n--;
+	return temp;
+}
