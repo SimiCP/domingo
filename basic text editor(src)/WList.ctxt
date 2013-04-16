@@ -1,0 +1,24 @@
+#BlueJ class context
+comment0.params=
+comment0.target=WList()
+comment1.params=i
+comment1.target=WList(int)
+comment10.params=args
+comment10.target=void\ main(java.lang.String[])
+comment2.params=s
+comment2.target=void\ append(java.lang.Object)
+comment3.params=p\ s
+comment3.target=void\ insert(int,\ java.lang.Object)
+comment4.params=
+comment4.target=void\ enlarge()
+comment5.params=p
+comment5.target=java.lang.Object\ get(int)
+comment6.params=p
+comment6.target=void\ remove(int)
+comment7.params=p\ s
+comment7.target=void\ replace(int,\ java.lang.Object)
+comment8.params=
+comment8.target=int\ size()
+comment9.params=
+comment9.target=java.lang.String\ toString()
+numComments=11

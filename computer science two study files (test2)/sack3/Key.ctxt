@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=xIn\ yIn
+comment0.target=Key(int,\ int)
+comment1.params=other
+comment1.target=int\ compareTo(Key)
+comment2.params=
+comment2.target=java.lang.String\ toString()
+comment3.params=other
+comment3.target=boolean\ equals(Key)
+numComments=4

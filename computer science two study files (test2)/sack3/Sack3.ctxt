@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Sack3()
+comment1.params=key
+comment1.target=int\ h(Key)
+comment2.params=key
+comment2.target=boolean\ find(Key)
+comment3.params=
+comment3.target=Block\ get()
+comment4.params=
+comment4.target=void\ remove()
+comment5.params=
+comment5.target=int\ size()
+comment6.params=b
+comment6.target=void\ add(Block)
+comment7.params=
+comment7.target=void\ initForTraverse()
+comment8.params=
+comment8.target=boolean\ hasNext()
+comment9.params=
+comment9.target=Block\ next()
+numComments=10

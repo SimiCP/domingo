@@ -1,0 +1,453 @@
+\input defs
+\input pictex
+
+\advance \voffset by -0.5 true in
+\advance \vsize by 1true in
+
+% special footline startup for test:
+\parindent 0in
+\def \testlabel{Test 1}
+\def \courselabel{CS 2050}
+\footline = {\sevenrm \courselabel \hfil \testlabel, Page \folio}
+\pageno 1
+
+\newtestpage{\courselabel}{\testlabel}{
+You may use any notes, books, printouts, or handouts.
+\medskip
+Many of the problems ask you to ``give an efficiency analysis'' for some method or algorithm.  
+For each of these, simply state what you think the worst-case
+number of representative operations is,
+namely $O(1)$, $O(n)$, $O(n^2)$, $O( \hbox{log}_2(n))$, or whatever, where $n$ is the number of items in the data structure, or perhaps some other quantity,
+and briefly explain/justify your answer.
+\medskip
+Each problem is worth 8 points, with points for parts indicated.}
+
+\item{1.}  % easy array work  
+                 %  go through a contiguous array a[0]..a[n-1], put every other item in an array temp
+                 %   starting with 
+                  %   MW:  position 0
+                  %   TR:  position 1
+ Suppose you have some class that has a collection of items in the instance variables given below, following
+ our usual approach (there are $n$ items, packed consecutively into {\tt a[0]} through
+ {\tt a[n-1]}).
+ \medskip
+ 
+ Write the body of the instance method given below that produces a new array that
+ has every other item from the current collection in it, in the same order, starting with
+ the item in position 0.
+ \medskip
+ 
+ For example, if {\tt a} were {\tt [17, 4, 21, 9, 40, 16]}, with $n=6$ (and any other spots in the
+ array omitted as irrelevant) then the
+ array returned would be {\tt [17, 21, 40]}, with physical length 3.
+ \medskip
+ 
+ \verbatim
+ private int a[];
+ private int n;
+ 
+ public int[] getEveryOtherOne()
+ {
+   // fill in below your formula, in terms of n, 
+   // for the physical size of the array temp:
+   
+   int[] temp = new int[                    ];
+   
+   // fill in your code below to fill in temp:
+|endverbatim
+\vfil
+\verbatim
+  return temp;
+ }
+ |endverbatim
+ 
+\newtestpage{\courselabel}{\testlabel}{}
+\item{2.} % implement Pile ADT using a[0] for top  and do O()
+                % remove and add both have to shift 
+                %  ask for just one of these---different one in each section!
+ Suppose we want to create a class to implement the idea of a ``pile.'' Unlike the decks of
+ index cards we used at times in class, a pile, for this problem, can only be accessed by
+ looking at the top card in the pile, by removing the top card in the pile, and by adding a
+ new card on top of the pile. 
+ Suppose further that we decide to implement the pile (assuming for simplicity that it's a
+ pile of {\tt String} references) by storing the top item in position 0 in an array, the next item
+ down in position 1, and so on, until the bottom item in the pile is stored in position {\tt n-1}.
+ \medskip
+ 
+ For example, if we had the pile
+ \verbatim
+ cat
+ dog
+ fish
+ |endverbatim
+ where {\tt cat} is the top item and {\tt fish} is the bottom item, then the array would
+ look like 
+ \beginpicture
+ \setcoordinatesystem units <1mm,.5mm>
+\putrule from 0 0 to 60.0 0
+\putrule from 0 10.0 to 60.0 10.0
+\putrule from 0.0 0 to 0.0 10.0
+\put {0} [B] at 5.0 12.0
+\put { cat} at 5.0 4.0
+\putrule from 10.0 0 to 10.0 10.0
+\put {1} [B] at 15.0 12.0
+\put { dog} at 15.0 4.0
+\putrule from 20.0 0 to 20.0 10.0
+\put {2} [B] at 25.0 12.0
+\put { fish} at 25.0 4.0
+\putrule from 30.0 0 to 30.0 10.0
+\put {3} [B] at 35.0 12.0
+\put { } at 31.0 4.0
+\putrule from 40.0 0 to 40.0 10.0
+\put {4} [B] at 45.0 12.0
+\put { } at 41.0 4.0
+\putrule from 50.0 0 to 50.0 10.0
+\put {5} [B] at 55.0 12.0
+\put { } at 51.0 4.0
+\putrule from 60.0 0 to 60.0 10.0
+\endpicture
+ \quad and after doing the operation {\tt add( "horse" )} the array would look like
+  \beginpicture
+ \setcoordinatesystem units <1mm,.5mm>
+\putrule from 0 0 to 60.0 0
+\putrule from 0 10.0 to 60.0 10.0
+\putrule from 0.0 0 to 0.0 10.0
+\put {0} [B] at 5.0 12.0
+\put { horse} at 5.0 4.0
+\putrule from 10.0 0 to 10.0 10.0
+\put {1} [B] at 15.0 12.0
+\put { cat} at 15.0 4.0
+\putrule from 20.0 0 to 20.0 10.0
+\put {2} [B] at 25.0 12.0
+\put { dog} at 25.0 4.0
+\putrule from 30.0 0 to 30.0 10.0
+\put {3} [B] at 35.0 12.0
+\put {fish} at 35.0 4.0
+\putrule from 40.0 0 to 40.0 10.0
+\put {4} [B] at 45.0 12.0
+\put { } at 41.0 4.0
+\putrule from 50.0 0 to 50.0 10.0
+\put {5} [B] at 55.0 12.0
+\put { } at 51.0 4.0
+\putrule from 60.0 0 to 60.0 10.0
+\endpicture
+\medskip
+
+Your job on this problem is to write the bodies of the {\tt add} method and the
+{\tt top} method, ignoring issues of physical capacity of the array.
+\smallskip\hrule\medskip
+
+{\baselineskip 0.8\baselineskip
+\verbatim
+public class Pile
+{
+  private String[] a;        private int n;
+  public Pile(){ a=new String[10000];  n=0; }
+  public int size(){ return n;}
+  // return the top item in the pile:
+  public String top()
+  {
+  
+  
+  
+  
+  }
+  // add s to the pile, following the required approach:
+  public void add( String s )
+  {
+|endverbatim
+\vskip 2.in
+\verbatim
+  }// end of add method
+}// end of class Pile
+|endverbatim
+\par}
+                
+\vfil
+
+\newtestpage{\courselabel}{\testlabel}{}
+\item{3.}  % imagine implementing PQ, keep sorted
+                 %   MW approach:  most important in 0, what's O() for all methods?
+                 %   TR approach:  most important in n-1, what's O() for all methods?
+This problem asks you to do efficiency analysis of several algorithms.
+\smallskip\hrule\medskip
+
+\item{a.} [2 points]  State the $O()$ efficiency category for the {\tt top}, {\tt add}, and
+{\tt remove} methods from the previous problem (note that you weren't asked to write
+{\tt remove}, but you can still analyze it), where the representative operation is storage
+in an array:
+\medskip
+{\tt top} is in $O( \hbox{\quad\quad})$
+\bigskip
+
+{\tt add} is in $O(   \hbox{\quad\quad}  )$
+\bigskip
+
+{\tt remove} is in $O(  \hbox{\quad\quad} )$
+\bigskip\hrule\medskip
+
+\item{b.}  Suppose we want to implement an abstract data type that stores a
+collection of items that is like a room full of people with varying degrees of importance,
+so when we remove a person from the room---to get service---we remove the
+most important person.
+\medskip
+Viewing the collection as holding {\tt int} values---the importance levels---we can {\tt add} a
+number to the collection, ask for the {\tt size} of the collection, and {\tt remove} the
+largest item from the collection.
+\medskip
+
+For example, if the collection held the items {\tt [3, 1, 7, 11]} and we do {\tt add(6)}, the
+collection would then hold the items {\tt [3, 1, 7, 11, 6]}.  And if we then asked to {\tt remove}
+an item, we would be given the item {\tt 11}, and the collection would change to hold
+{\tt [3,1,7,6]}.
+\medskip
+
+Suppose we decide to store the items in the collection in our usual way, consecutively
+in an array, and that we decide to keep the items in the array sorted by importance, where
+the most important item is in position 0, with the importance of the items decreasing
+as we go further in the array.
+\medskip
+
+Under all these assumptions, state the $O()$ efficiency category for each of the methods in
+the ADT, where the representative operation is array storage, and briefly explain your thinking:
+\bigskip
+
+{\tt add}:
+\vfil
+
+{\tt remove}:
+\vfil
+
+{\tt size}:
+
+\vfil
+
+\newtestpage{\courselabel}{\testlabel}{}
+\item{4.}
+Consider this interface for a version of the list ADT, which we will name
+{\tt OurList}.  It is based on the usual list ADT,
+except the usual {\tt remove} method has been replaced by
+two methods, namely {\tt removeFirst} and {\tt removeLast}.
+\medskip
+
+{\baselineskip 0.8\baselineskip
+\verbatim
+void add(E e)      // append e to the end of this list
+void	add(int index, E e)      // insert e into position index in the list
+E get(int index)  // return the item stored in position index in the list
+void removeFirst()     // remove the item stored at position 0
+void removeLast()    // remove the item stored at position n-1
+E set(int index, E e)  // replace the item stored at position index by e 
+int size()                     // return the number of items in this list
+ |endverbatim
+ \par}
+
+{\bf You must use a loop, and you must use this approach for part a:}  repeatedly remove the
+first item in the list until there is only one item left.  You can assume that the given list
+has at least one item.
+\medskip
+
+\item{a.} [6 points]
+Using these public methods, and assuming that the instance variables of the
+{\tt OurList} class are private, write the body of the method specified below using a
+loop (no credit for using recursion).
+\medskip
+
+\verbatim
+// remove all the items from the given list except for the last one
+//  Example:  if  list is [3,1,7,5,6], after this method executes, list
+//                     becomes [6]
+public void removeAllButLast( OurList list )
+{  // insert your code here following the required approach:
+|endverbatim
+\vfil
+\verbatim
+}// end of removeAllButLast
+|endverbatim
+\bigskip
+\hrule
+\bigskip
+
+\item{b.} [2 points]  State the $O()$ efficiency category for your method, where the
+representative operation is array storage, assuming that {\tt OurList} is implemented
+using the same approach that we used in implementing our version of the {\tt ArrayList}
+class. Briefly explain your thinking.
+\vskip 1in
+
+\newtestpage{\courselabel}{\testlabel}{}
+\item{5.}
+
+\item{a.} [4 points]
+Demonstrate the behavior of the merge ({\bf not } merge sort) algorithm on this array,
+assuming that we are merging the range from indices {\tt 0} through {\tt 3}
+with the range from {\tt 4} through {\tt 7}.  Use the empty array beneath the given array
+as the place to copy into---and don't bother to copy the items back to the original.
+And, show how the merge algorithm works, even though the two separate sublists are
+not sorted as they would be in the merge sort algorithm.
+
+\vfil
+\beginpicture
+\setcoordinatesystem units <1mm,1mm>
+\putrule from 0 0 to 80.0 0
+\putrule from 0 10.0 to 80.0 10.0
+\putrule from 80 0 to 80 10
+\putrule from 0.0 0 to 0.0 10.0
+\put {0} [B] at 5.0 12.0
+\put { 3} at 5.0 5.0
+\putrule from 10.0 0 to 10.0 10.0
+\put {1} [B] at 15.0 12.0
+\put { 1} at 15.0 5.0
+\putrule from 20.0 0 to 20.0 10.0
+\put {2} [B] at 25.0 12.0
+\put { 5} at 25.0 5.0
+\putrule from 30.0 0 to 30.0 10.0
+\put {3} [B] at 35.0 12.0
+\put { 7} at 35.0 5.0
+\putrule from 40.0 0 to 40.0 10.0
+\put {4} [B] at 45.0 12.0
+\put { 6} at 45.0 5.0
+\putrule from 50.0 0 to 50.0 10.0
+\put {5} [B] at 55.0 12.0
+\put { 2} at 55.0 5.0
+\putrule from 60.0 0 to 60.0 10.0
+\put {6} [B] at 65.0 12.0
+\put { 4} at 65.0 5.0
+\putrule from 70.0 0 to 70.0 10.0
+\put {7} [B] at 75.0 12.0
+\put { 8} at 75.0 5.0
+\endpicture
+\medskip
+\vfil
+\beginpicture
+\setcoordinatesystem units <1mm,1mm>
+\putrule from 0 0 to 80.0 0
+\putrule from 0 10.0 to 80.0 10.0
+\putrule from 80 0 to 80 10
+\putrule from 0.0 0 to 0.0 10.0
+\put {0} [B] at 5.0 12.0
+\put { } at 5.0 5.0
+\putrule from 10.0 0 to 10.0 10.0
+\put {1} [B] at 15.0 12.0
+\put { } at 15.0 5.0
+\putrule from 20.0 0 to 20.0 10.0
+\put {2} [B] at 25.0 12.0
+\put { } at 25.0 5.0
+\putrule from 30.0 0 to 30.0 10.0
+\put {3} [B] at 35.0 12.0
+\put { } at 35.0 5.0
+\putrule from 40.0 0 to 40.0 10.0
+\put {4} [B] at 45.0 12.0
+\put { } at 45.0 5.0
+\putrule from 50.0 0 to 50.0 10.0
+\put {5} [B] at 55.0 12.0
+\put { } at 55.0 5.0
+\putrule from 60.0 0 to 60.0 10.0
+\put {6} [B] at 65.0 12.0
+\put { } at 65.0 5.0
+\putrule from 70.0 0 to 70.0 10.0
+\put {7} [B] at 75.0 12.0
+\put { } at 75.0 5.0
+\endpicture
+\vfil
+\smallskip\hrule\medskip
+
+\item{b.} [4 points]
+Demonstrate the behavior of the binary search algorithm on this array,
+assuming that you start with indices 0 and 12, and that the target value is 23:
+\medskip
+\beginpicture
+\setcoordinatesystem units <1mm,1mm>
+\putrule from 0 0 to 130.0 0
+\putrule from 0 10.0 to 130.0 10.0
+\putrule from 0.0 0 to 0.0 10.0
+\put {0} [B] at 5.0 12.0
+\put { 3} at 5.0 5.0
+\putrule from 10.0 0 to 10.0 10.0
+\put {1} [B] at 15.0 12.0
+\put { 7} at 15.0 5.0
+\putrule from 20.0 0 to 20.0 10.0
+\put {2} [B] at 25.0 12.0
+\put { 11} at 25.0 5.0
+\putrule from 30.0 0 to 30.0 10.0
+\put {3} [B] at 35.0 12.0
+\put { 15} at 35.0 5.0
+\putrule from 40.0 0 to 40.0 10.0
+\put {4} [B] at 45.0 12.0
+\put { 23} at 45.0 5.0
+\putrule from 50.0 0 to 50.0 10.0
+\put {5} [B] at 55.0 12.0
+\put { 37} at 55.0 5.0
+\putrule from 60.0 0 to 60.0 10.0
+\put {6} [B] at 65.0 12.0
+\put { 43} at 65.0 5.0
+\putrule from 70.0 0 to 70.0 10.0
+\put {7} [B] at 75.0 12.0
+\put { 51} at 75.0 5.0
+\putrule from 80.0 0 to 80.0 10.0
+\put {8} [B] at 85.0 12.0
+\put { 52} at 85.0 5.0
+\putrule from 90.0 0 to 90.0 10.0
+\put {9} [B] at 95.0 12.0
+\put { 53} at 95.0 5.0
+\putrule from 100.0 0 to 100.0 10.0
+\put {10} [B] at 105.0 12.0
+\put { 63} at 105.0 5.0
+\putrule from 110.0 0 to 110.0 10.0
+\put {11} [B] at 115.0 12.0
+\put { 71} at 115.0 5.0
+\putrule from 120.0 0 to 120.0 10.0
+\put {12} [B] at 125.0 12.0
+\put { 109} at 125.0 5.0
+\putrule from 130.0 0 to 130.0 10.0
+\endpicture
+\medskip
+\medskip
+
+You may explain the behavior of the algorithm however you like, as long as you clearly show your understanding of it.  Tracking the successive values of {\tt first}, {\tt last}, and {\tt mid} in the
+recursive calls is a good idea, along with stating what result is returned.
+\vfil
+\vfil
+\vfil
+\vfil
+\vfil
+\vfil
+
+\newtestpage{\courselabel}{\testlabel}{}
+\item{6.}
+This problem uses the {\tt OurList} class as defined in Problem 4.
+\medskip
+
+{\bf You must use recursion\/} to implement the method in part a.
+You can assume that the originally given list
+has at least one item (after that it's your responsibility).
+\medskip
+
+\item{a.} [6 points]
+Using the public methods of {\tt OurList}, and assuming that the instance variables of the
+{\tt OurList} class are private, write the body of the method specified below using 
+recursion (no credit for using a loop).
+\medskip
+
+\verbatim
+// remove all the items from the given list except for the first one
+//  Example:  if  list is [3,1,7,5,6], after this method executes, list
+//                     becomes [3]
+public void removeAllButFirst( OurList list )
+{  // insert your code here following the required approach:
+|endverbatim
+\vfil
+\verbatim
+}// end of removeAllButFirst
+|endverbatim
+\bigskip
+\hrule
+\bigskip
+
+\item{b.} [2 points]  State the $O()$ efficiency category for your method, where the
+representative operation is array storage, assuming that {\tt OurList} is implemented
+using the same approach that we used in implementing our version of the {\tt ArrayList}
+class. Briefly explain your thinking.
+\vskip 1in
+
+\eject
+\bye

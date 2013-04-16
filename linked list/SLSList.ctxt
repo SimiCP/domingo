@@ -1,0 +1,22 @@
+#BlueJ class context
+comment0.params=
+comment0.target=SLSList()
+comment1.params=number
+comment1.target=void\ hop(int)
+comment2.params=s
+comment2.target=void\ append(java.lang.String)
+comment3.params=index\ s
+comment3.target=void\ insert(int,\ java.lang.String)
+comment4.params=index
+comment4.target=java.lang.String\ get(int)
+comment5.params=index
+comment5.target=void\ remove(int)
+comment6.params=index\ s
+comment6.target=void\ replace(int,\ java.lang.String)
+comment7.params=
+comment7.target=int\ size()
+comment8.params=message
+comment8.target=void\ show(java.lang.String)
+comment9.params=args
+comment9.target=void\ main(java.lang.String[])
+numComments=10
