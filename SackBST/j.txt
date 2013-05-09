@@ -1,0 +1,4 @@
+rm *.class
+javac $1.java
+java $1 $2 $3 $4 $5
+

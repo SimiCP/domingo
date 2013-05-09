@@ -1,0 +1,262 @@
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.*;
+import java.awt.event.*;
+
+import java.util.*;
+import java.io.*;
+
+public class TreeViewer extends Basic
+{
+  private static int camw = 400, camh = 400;
+
+  public static void main(String[] args)
+  {
+    // example: hard-coded location and size of window:
+    TreeViewer a = new TreeViewer("Tree Viewer Application", 0, 0, 
+                                     10+camw+10, 50+camh+10+20+10 );
+
+  }
+
+  // instance variables for the application:
+  //------------------------------------------------------------------
+  private SackBST tree; // the tree being viewed
+
+  private double spread;  // distance between centers of items on bottom level
+  private double levelHeight;  // distance between levels
+
+  private String state;
+  private String stringToAdd;
+
+  //------------------------------------------------------------------
+
+  public TreeViewer( String title, int ulx, int uly, int pw, int ph )
+  {
+    super(title,ulx,uly,pw,ph);
+
+    // code to initialize instance variables before animation begins:
+    //------------------------------------------------------------------
+
+    state = "regular";
+   
+    spread = 1;
+    levelHeight = 10;  // 10 levels for the camera region height
+
+    tree = new SackBST();
+    String fileName = FileBrowser.chooseFile( true );
+
+    try{
+      Scanner input = new Scanner( new File( fileName ) );     
+      String s;
+
+      while( input.hasNext() )
+      {
+        s = input.nextLine();
+        if( s != null )
+        {
+          tree.add( s );
+        }
+      }
+
+      input.close();
+    }
+    catch(Exception e)
+    {
+      System.out.println("File load failed");
+      System.exit(1);
+    }
+
+    // code to finish setting up entire window:
+    //------------------------------------------------------------------
+  
+    setBackgroundColor( new Color( 128, 128, 200 ) );
+
+    // code to set up camera(s)
+    //------------------------------------------------------------------
+  
+    cameras.add( new Camera( 10, 50, camw, camh,
+                         0, 100, 0,
+                         new Color( 255, 200, 255 ) ) );
+
+    cameras.add( new Camera( 10, 50+camh+10, camw, 20,
+                         0, 100, 0,
+                         new Color( 255, 255, 255 ) ) );
+
+    //------------------------------------------------------------------
+    // start up the animation:
+    super.start();
+  }
+
+  public void step()
+  {
+    Camera cam = cameras.get(0);
+    cam.activate();
+
+    cam.setColor( Color.black );
+    tree.display( 50, 90, cam, spread, levelHeight );
+    //-------------------------------------------------
+
+    cam = cameras.get(1);
+    cam.activate();
+
+    if( state.equals( "add" ) )
+    {
+      cam.setColor( Color.black );
+      cam.drawText( ">>> " + stringToAdd, 5, 2 );
+    }
+
+  }
+
+  public void keyTyped( KeyEvent e )
+  {
+    char key = e.getKeyChar();
+    
+    if( state.equals( "regular" ) && key == 'a' )
+    {
+      stringToAdd = "";
+      state = "add";
+    }
+
+    else if( state.equals("add") && (' '<=key && key<='~' ) )
+    {
+      stringToAdd += key;
+    }
+    
+  }
+
+  public void keyPressed( KeyEvent e )
+  {
+    int code = e.getKeyCode();
+
+    Camera cam = cameras.get(0);
+
+    if( state.equals( "regular" ) )
+    {
+      if( code == KeyEvent.VK_L )
+      {
+        cam.shiftRegion( 0.25, 0 );     
+      }
+      else if( code == KeyEvent.VK_R )
+      {
+        cam.shiftRegion( -0.25, 0 );     
+      }
+      else if( code == KeyEvent.VK_U )
+      {
+        cam.shiftRegion( 0, -0.25 );     
+      }
+      else if( code == KeyEvent.VK_D )
+      {
+        cam.shiftRegion( 0, 0.25 );     
+      }
+      else if( code == KeyEvent.VK_S )
+      {
+        cam.scaleRegion( 1.1, 1.1 );     
+      }
+      else if( code == KeyEvent.VK_B )
+      {
+        cam.scaleRegion( 1/1.1, 1/1.1 );     
+      }
+      else if( code == KeyEvent.VK_W )
+      {
+        spread *= 1.1;
+      }
+      else if( code == KeyEvent.VK_N )
+      {
+        spread /= 1.1;
+      }
+      else if( code == KeyEvent.VK_H )
+      {
+        cam.setRegion( 0, 100, 0, 100 );
+      }
+  
+    }// regular state
+
+    else if( state.equals( "add" ) )
+    {
+      if( code == KeyEvent.VK_ENTER )
+      {
+        state = "regular";
+        if( ! stringToAdd.equals( "" ) ) 
+          tree.add( stringToAdd );
+      }
+      else if( code == KeyEvent.VK_DELETE || code == KeyEvent.VK_BACK_SPACE )
+      {
+        if( stringToAdd.length() > 0 )
+          stringToAdd = stringToAdd.substring( 0, stringToAdd.length()-1 );
+      }
+
+    }// add state
+
+  }
+
+  public void mouseMoved(MouseEvent e)
+  {
+    super.mouseMoved(e);
+
+    // code to respond to mouse motion:
+    //------------------------------------------------------------------
+
+    //------------------------------------------------------------------
+  }
+
+  public void mouseDragged(MouseEvent e)
+  {
+    super.mouseDragged(e);
+
+    // code to respond to mouse motion with a button pressed:
+    //------------------------------------------------------------------
+
+    //------------------------------------------------------------------
+  }
+
+  public void mouseClicked(MouseEvent e)
+  {
+    super.mouseClicked(e);
+
+    // code to respond to mouse click:
+    //------------------------------------------------------------------
+
+    //------------------------------------------------------------------
+  }
+
+  public void mousePressed(MouseEvent e)
+  {
+    super.mousePressed(e);
+
+    // code to respond to mouse button pressed:
+    //------------------------------------------------------------------
+
+    //------------------------------------------------------------------
+  }
+
+  public void mouseReleased(MouseEvent e)
+  {
+    super.mouseReleased(e);
+
+    // code to respond to mouse button released:
+    //------------------------------------------------------------------
+
+    //------------------------------------------------------------------
+  }
+
+  public void mouseEntered(MouseEvent e)
+  {
+    super.mouseEntered(e);
+
+    // code to respond to mouse entering window:
+    //------------------------------------------------------------------
+
+    //------------------------------------------------------------------
+  }
+
+  public void mouseExited(MouseEvent e)
+  {
+    super.mouseExited(e);
+
+    // code to respond to mouse exiting window:
+    //------------------------------------------------------------------
+
+    //------------------------------------------------------------------
+  }
+
+}
