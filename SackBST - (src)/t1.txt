@@ -1,0 +1,15 @@
+dog
+cat
+elephant
+horse
+mule
+donkey
+burro
+zebra
+gazelle
+cheetah
+muskrat
+monkey
+chimp
+human
+fish
